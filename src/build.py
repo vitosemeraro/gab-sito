@@ -24,6 +24,8 @@ def inbreve(t): return f'<div class="inbreve"><strong>In breve</strong><p>{t}</p
 
 # GA4: Analytics caricato solo dopo "Accetta" (nessuna richiesta a Google prima del consenso)
 GA_ID = 'G-B77K9RC859'
+# CFWA: Cloudflare Web Analytics, senza cookie: conta tutte le visite, anche di chi rifiuta il banner
+CFWA = '<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon=\'{"token": "84af6820ea6c4d93b3e82df54a69762c"}\'></script>'
 CK_HTML = ('<div id="ck" class="ck" role="dialog" aria-label="Preferenze cookie" hidden><p>Usiamo Google Analytics solo se accetti, '
            'per capire quali pagine sono utili. Nessun cookie pubblicitario. <a href="/privacy/#cookie">Privacy e cookie</a></p>'
            '<div><button type="button" class="btn btn-ghost" data-ok>Accetta</button><button type="button" class="btn btn-ghost" data-no>Rifiuta</button></div></div>')
@@ -172,7 +174,7 @@ def page(path, title, desc, body, ld_items=(), scripts=(), og_image='/img/vito-h
 </div><div class="wrap" style="margin-top:30px;font-size:.8rem;opacity:.7">© {date.today().year} GAB Gestione Affitti Brevi · Recensioni da Airbnb, pubblicate dagli ospiti</div></footer>
 {CK_HTML}
 <div class="mobilebar"><a class="btn btn-ghost" href="tel:{TEL}">Chiama</a><a class="btn btn-wa" href="{WA}">WhatsApp</a></div>
-{js}<script>{CK_JS}</script>
+{js}<script>{CK_JS}</script>{CFWA}
 </body>
 </html>'''
 
@@ -674,7 +676,7 @@ def build_misc():
 <h2>Quali dati raccogliamo</h2><p>Solo i dati che ci invii con il modulo di contatto, via email, telefono o WhatsApp: nome, telefono, email, zona e informazioni sull'immobile.</p>
 <h2>Perché</h2><p>Per risponderti e prepararti una proposta (base giuridica: misure precontrattuali richieste da te, art. 6.1.b GDPR). Non usiamo i dati per altre finalità e non li cediamo a terzi.</p>
 <h2>Per quanto tempo</h2><p>Fino a 24 mesi dall'ultimo contatto, salvo un rapporto di gestione in corso.</p>
-<h2 id="cookie">Cookie</h2><p>Questo sito non usa cookie di profilazione né strumenti di tracciamento pubblicitario. Usa Google Analytics 4 (Google Ireland Ltd) solo se lo accetti dal banner: misura in forma aggregata le pagine visitate e i contatti avviati, con i cookie _ga e _ga_* che durano fino a 14 mesi. Senza il tuo consenso lo script di Google non viene caricato. Puoi cambiare scelta in ogni momento dal link "Preferenze cookie" in fondo alla pagina; la scelta resta salvata nel tuo browser. La mappa delle zone carica la libreria Leaflet da cdnjs (Cloudflare) e le immagini da OpenStreetMap, che ricevono il tuo indirizzo IP come avviene per ogni immagine sul web. Il link a Calendly e WhatsApp ti porta su servizi esterni con le loro informative.</p>
+<h2 id="cookie">Cookie</h2><p>Questo sito non usa cookie di profilazione né strumenti di tracciamento pubblicitario. Usa Google Analytics 4 (Google Ireland Ltd) solo se lo accetti dal banner: misura in forma aggregata le pagine visitate e i contatti avviati, con i cookie _ga e _ga_* che durano fino a 14 mesi. Per contare le visite in forma anonima usiamo anche Cloudflare Web Analytics, che non usa cookie né altri dati salvati sul tuo dispositivo e non ti segue su altri siti. Senza il tuo consenso lo script di Google non viene caricato. Puoi cambiare scelta in ogni momento dal link "Preferenze cookie" in fondo alla pagina; la scelta resta salvata nel tuo browser. La mappa delle zone carica la libreria Leaflet da cdnjs (Cloudflare) e le immagini da OpenStreetMap, che ricevono il tuo indirizzo IP come avviene per ogni immagine sul web. Il link a Calendly e WhatsApp ti porta su servizi esterni con le loro informative.</p>
 <h2>I tuoi diritti</h2><p>Puoi chiedere accesso, rettifica, cancellazione, limitazione e portabilità dei tuoi dati scrivendo a <a href="mailto:{MAIL}">{MAIL}</a>, e puoi presentare reclamo al Garante per la protezione dei dati personali.</p>
 <p class="meta">Ultimo aggiornamento: {date.today().strftime('%d/%m/%Y')}</p></div></section>'''
     simple_page('/privacy/', [H, ('Privacy', None)], 'Informativa', 'Privacy e cookie', 'Come trattiamo i tuoi dati.', inner,

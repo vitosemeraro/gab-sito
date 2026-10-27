@@ -1,0 +1,72 @@
+# Genera il sito, controlla i link e lo carica su Netsons via FTPS.
+# Gira a ogni push su main e ogni mattina alle 6 (le 7 con l'ora legale): la mattina pubblica solo se c'è un articolo con la data di oggi.
+name: Pubblica sito
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '0 5 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: pubblica
+  cancel-in-progress: false
+
+jobs:
+  pubblica:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: C'è qualcosa da pubblicare oggi?
+        id: oggi
+        run: |
+          OGGI=$(TZ=Europe/Rome date +%F)
+          NUOVI=$(ls src/content/guide/${OGGI}-*.md 2>/dev/null | sed -E "s#.*/${OGGI}-(.*)\.md#\1#" | tr '\n' ' ')
+          echo "nuovi=$NUOVI" >> "$GITHUB_OUTPUT"
+          if [ "$GITHUB_EVENT_NAME" = "schedule" ] && [ -z "$NUOVI" ]; then echo "vai=no" >> "$GITHUB_OUTPUT"; else echo "vai=si" >> "$GITHUB_OUTPUT"; fi
+
+      - uses: actions/setup-python@v5
+        if: steps.oggi.outputs.vai == 'si'
+        with:
+          python-version: '3.12'
+
+      - name: Genera il sito
+        if: steps.oggi.outputs.vai == 'si'
+        env:
+          TZ: Europe/Rome
+        run: |
+          pip install --quiet pillow
+          python src/build.py
+          cp -r static/. src/dist/
+
+      - name: Controlla i link
+        if: steps.oggi.outputs.vai == 'si'
+        run: python tools/check_links.py src/dist
+
+      - name: Carica su Netsons (FTPS)
+        if: steps.oggi.outputs.vai == 'si'
+        env:
+          FTP_HOST: ${{ secrets.FTP_HOST }}
+          FTP_USER: ${{ secrets.FTP_USER }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          FTP_DIR: ${{ secrets.FTP_DIR }}
+        run: |
+          sudo apt-get install -y -qq lftp > /dev/null
+          # mirror senza --delete: sul server restano le cartelle che non sono del sito (homestaged-AI, .well-known, cgi-bin)
+          lftp -u "$FTP_USER","$FTP_PASSWORD" "$FTP_HOST" -e "set ftp:ssl-force true; set ftp:ssl-protect-data true; set ssl:verify-certificate yes; mirror -R --parallel=4 --no-perms src/dist ${FTP_DIR:-public_html}; bye"
+
+      - name: Avvisa i motori (IndexNow)
+        if: steps.oggi.outputs.vai == 'si'
+        run: |
+          SITE=https://gestione-affitti-brevi-milano.it
+          KEY=$(grep -oP "INDEXNOW_KEY = '\K[0-9a-f]+" src/build.py)
+          if [ "$GITHUB_EVENT_NAME" = "schedule" ]; then
+            URLS=$(for s in ${{ steps.oggi.outputs.nuovi }}; do printf '"%s/guide/%s/",' "$SITE" "$s"; done; printf '"%s/guide/"' "$SITE")
+          else
+            URLS=$(grep -oP '<loc>\K[^<]+' src/dist/sitemap.xml | sed 's/.*/"&"/' | paste -sd,)
+          fi
+          curl -s -o /dev/null -w "IndexNow: %{http_code}\n" -X POST https://api.indexnow.org/indexnow \
+            -H 'Content-Type: application/json; charset=utf-8' \
+            -d "{\"host\":\"gestione-affitti-brevi-milano.it\",\"key\":\"$KEY\",\"keyLocation\":\"$SITE/$KEY.txt\",\"urlList\":[$URLS]}"

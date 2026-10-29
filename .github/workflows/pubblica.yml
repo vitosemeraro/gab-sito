@@ -16,6 +16,8 @@ concurrency:
 jobs:
   pubblica:
     runs-on: ubuntu-latest
+    env:
+      HAS_FTP: ${{ secrets.FTP_HOST != '' }}
     steps:
       - uses: actions/checkout@v4
 
@@ -45,8 +47,12 @@ jobs:
         if: steps.oggi.outputs.vai == 'si'
         run: python tools/check_links.py src/dist
 
+      - name: Mancano i dati FTP
+        if: steps.oggi.outputs.vai == 'si' && env.HAS_FTP != 'true'
+        run: echo "::warning::Secrets FTP non impostati: il sito è stato generato e controllato ma non caricato. La routine del lunedì lo pubblica da cPanel."
+
       - name: Carica su Netsons (FTPS)
-        if: steps.oggi.outputs.vai == 'si'
+        if: steps.oggi.outputs.vai == 'si' && env.HAS_FTP == 'true'
         env:
           FTP_HOST: ${{ secrets.FTP_HOST }}
           FTP_USER: ${{ secrets.FTP_USER }}
@@ -58,7 +64,7 @@ jobs:
           lftp -u "$FTP_USER","$FTP_PASSWORD" "$FTP_HOST" -e "set ftp:ssl-force true; set ftp:ssl-protect-data true; set ssl:verify-certificate yes; mirror -R --parallel=4 --no-perms src/dist ${FTP_DIR:-public_html}; bye"
 
       - name: Avvisa i motori (IndexNow)
-        if: steps.oggi.outputs.vai == 'si'
+        if: steps.oggi.outputs.vai == 'si' && env.HAS_FTP == 'true'
         run: |
           SITE=https://gestione-affitti-brevi-milano.it
           KEY=$(grep -oP "INDEXNOW_KEY = '\K[0-9a-f]+" src/build.py)

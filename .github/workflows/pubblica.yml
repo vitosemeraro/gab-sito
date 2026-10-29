@@ -49,7 +49,8 @@ jobs:
 
       - name: Mancano i dati FTP
         if: steps.oggi.outputs.vai == 'si' && env.HAS_FTP != 'true'
-        run: echo "::warning::Secrets FTP non impostati: il sito è stato generato e controllato ma non caricato. La routine del lunedì lo pubblica da cPanel."
+        run: |
+          echo "::warning::Secrets FTP non impostati, il sito è stato generato e controllato ma non caricato. La routine del lunedì lo pubblica da cPanel."
 
       - name: Carica su Netsons (FTPS)
         if: steps.oggi.outputs.vai == 'si' && env.HAS_FTP == 'true'

@@ -678,7 +678,7 @@ def build_misc():
 <h2>Per quanto tempo</h2><p>Fino a 24 mesi dall'ultimo contatto, salvo un rapporto di gestione in corso.</p>
 <h2 id="cookie">Cookie</h2><p>Questo sito non usa cookie di profilazione né strumenti di tracciamento pubblicitario. Usa Google Analytics 4 (Google Ireland Ltd) solo se lo accetti dal banner: misura in forma aggregata le pagine visitate e i contatti avviati, con i cookie _ga e _ga_* che durano fino a 14 mesi. Per contare le visite in forma anonima usiamo anche Cloudflare Web Analytics, che non usa cookie né altri dati salvati sul tuo dispositivo e non ti segue su altri siti. Senza il tuo consenso lo script di Google non viene caricato. Puoi cambiare scelta in ogni momento dal link "Preferenze cookie" in fondo alla pagina; la scelta resta salvata nel tuo browser. La mappa delle zone carica la libreria Leaflet da cdnjs (Cloudflare) e le immagini da OpenStreetMap, che ricevono il tuo indirizzo IP come avviene per ogni immagine sul web. Il link a Calendly e WhatsApp ti porta su servizi esterni con le loro informative.</p>
 <h2>I tuoi diritti</h2><p>Puoi chiedere accesso, rettifica, cancellazione, limitazione e portabilità dei tuoi dati scrivendo a <a href="mailto:{MAIL}">{MAIL}</a>, e puoi presentare reclamo al Garante per la protezione dei dati personali.</p>
-<p class="meta">Ultimo aggiornamento: {date.today().strftime('%d/%m/%Y')}</p></div></section>'''
+<p class="meta">Ultimo aggiornamento: 27/10/2026</p></div></section>'''
     simple_page('/privacy/', [H, ('Privacy', None)], 'Informativa', 'Privacy e cookie', 'Come trattiamo i tuoi dati.', inner,
                 'Privacy e cookie | GAB', 'Informativa privacy e cookie di GAB Gestione Affitti Brevi: quali dati raccogliamo dal modulo contatti e come li trattiamo.', band=False, priority='0.2')
 
@@ -697,7 +697,7 @@ def guide(slug, title, h1, desc, lead, toc, content, faqs, updated=None, brief='
     path = f'/guide/{slug}/'
     H = ('Home', '/'); G = ('Guide', '/guide/')
     tochtml = '<nav class="toc" aria-label="Indice"><strong>In questa guida</strong><ol>' + ''.join(f'<li><a href="#{a}">{t}</a></li>' for a, t in toc) + '</ol></nav>'
-    upd = updated or date.today().isoformat()
+    upd = updated or '2026-10-27'  # data fissa: la data di aggiornamento cambia solo quando cambia il testo
     inner = f'''<section class="section" style="padding-top:10px"><div class="wrap prose">
 <div class="signed">{picture('vito-avatar', [160], 'Vito Semeraro', '56px', eager=True)}<div><strong>Vito Semeraro</strong><small>Aggiornata il {date.fromisoformat(upd).strftime('%d/%m/%Y')}</small></div></div>
 {inbreve(brief) if brief else ''}{tochtml}{content}

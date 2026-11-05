@@ -800,19 +800,25 @@ def build_guides():
            ('La Legge di Bilancio 2027 cambia la cedolare sugli affitti brevi?', 'Al 26 ottobre 2026 no: le proposte in discussione riguardano il canone concordato (dal 10% al 5%) e i negozi, non gli affitti brevi.'),
            ('Con tre appartamenti posso ancora usare la cedolare?', 'No, dal 2026 con tre o più unità in affitto breve l\'attività si presume d\'impresa e serve la partita IVA.')])
 
-    guide('codice-cin-affitti-brevi', 'Codice CIN affitti brevi: cos\'è, come ottenerlo, sanzioni | GAB',
+    guide('codice-cin-affitti-brevi', 'Codice CIN affitti brevi: come ottenerlo e sanzioni | GAB',
           'Codice CIN per affitti brevi: cos\'è, come ottenerlo e sanzioni',
-          'Codice CIN per affitti brevi: chi deve averlo, come richiederlo sulla BDSR, requisiti di sicurezza, dove esporlo e sanzioni.',
+          'Codice CIN per affitti brevi a Milano: chi deve averlo, come richiederlo gratis sulla BDSR, requisiti di sicurezza, dove esporlo e sanzioni.',
           'Il CIN è obbligatorio per tutti gli affitti brevi e turistici. Ecco come ottenerlo e cosa rischi senza.',
-          [('cosa', 'Cos\'è il CIN'), ('chi', 'Chi deve averlo'), ('come', 'Come si richiede'), ('requisiti', 'Requisiti di sicurezza'), ('dove', 'Dove esporlo'), ('sanzioni', 'Sanzioni')],
-          '''<h2 id="cosa">Cos'è il CIN</h2><p>Il Codice Identificativo Nazionale identifica ogni immobile usato per affitti brevi o turistici. È stato introdotto dall'articolo 13-ter del decreto legge 145/2023 ed è rilasciato dalla Banca Dati nazionale delle Strutture Ricettive (BDSR) del Ministero del Turismo.</p>
-<h2 id="chi">Chi deve averlo</h2><p>Tutti i proprietari, o chi gestisce l'immobile, che affittano per periodi fino a 30 giorni, anche per una sola notte e anche tramite portali come Airbnb e Booking.</p>
-<h2 id="come">Come si richiede</h2><ol><li>Accedi al portale BDSR del Ministero del Turismo con SPID o CIE.</li><li>Se l'immobile ha già un codice regionale (in Lombardia il CIR), trovi i dati precompilati e confermi.</li><li>Dichiari i requisiti di sicurezza e ottieni il CIN, di solito in tempi brevi.</li></ol><p>Se ci affidi la gestione, la richiesta la facciamo noi.</p>
-<h2 id="requisiti">Requisiti di sicurezza</h2><ul><li>Rilevatori funzionanti di gas combustibili e di monossido di carbonio</li><li>Estintori portatili a norma, accessibili e visibili</li></ul>
-<h2 id="dove">Dove esporlo</h2><p>Il CIN va indicato in ogni annuncio online e affisso all'esterno dell'edificio in cui si trova l'appartamento.</p>
-<h2 id="sanzioni">Sanzioni</h2><table><tr><th>Violazione</th><th>Sanzione</th></tr><tr><td>Affitto senza CIN</td><td>da 800 a 8.000 €</td></tr><tr><td>CIN non esposto o non indicato negli annunci</td><td>da 500 a 5.000 €</td></tr><tr><td>Mancanza dei dispositivi di sicurezza</td><td>da 600 a 6.000 €</td></tr></table>''',
+          [('cosa', 'Cos\'è il codice CIN?'), ('chi', 'Chi deve avere il CIN?'), ('come', 'Come si richiede il CIN?'), ('requisiti', 'Quali requisiti di sicurezza servono?'), ('dove', 'Dove va esposto il CIN?'), ('sanzioni', 'Quali sono le sanzioni?'), ('milano', 'Cosa cambia a Milano?')],
+          '''<h2 id="cosa">Cos'è il codice CIN?</h2><p>Il Codice Identificativo Nazionale identifica ogni immobile usato per affitti brevi o turistici. È stato introdotto dall'articolo 13-ter del decreto legge 145/2023 ed è rilasciato dalla Banca Dati nazionale delle Strutture Ricettive (BDSR) del Ministero del Turismo.</p>
+<h2 id="chi">Chi deve avere il CIN?</h2><p>Tutti i proprietari, o chi gestisce l'immobile, che affittano per periodi fino a 30 giorni, anche per una sola notte e anche tramite portali come Airbnb e Booking.</p>
+<h2 id="come">Come si richiede il CIN?</h2><ol><li>Accedi al portale BDSR del Ministero del Turismo con SPID o CIE.</li><li>Se l'immobile ha già un codice regionale (in Lombardia il CIR), trovi i dati precompilati e confermi.</li><li>Dichiari i requisiti di sicurezza e ottieni il CIN, di solito in tempi brevi.</li></ol><p>La richiesta è gratuita. Se ci affidi la gestione, la facciamo noi.</p>
+<h2 id="requisiti">Quali requisiti di sicurezza servono?</h2><ul><li>Rilevatori funzionanti di gas combustibili e di monossido di carbonio</li><li>Estintori portatili a norma, accessibili e visibili</li></ul>
+<h2 id="dove">Dove va esposto il CIN?</h2><p>Il CIN va indicato in ogni annuncio online e affisso all'esterno dell'edificio in cui si trova l'appartamento.</p>
+<h2 id="sanzioni">Quali sono le sanzioni?</h2><table><tr><th>Violazione</th><th>Sanzione</th></tr><tr><td>Affitto senza CIN</td><td>da 800 a 8.000 €</td></tr><tr><td>CIN non esposto o non indicato negli annunci</td><td>da 500 a 5.000 €</td></tr><tr><td>Mancanza dei dispositivi di sicurezza</td><td>da 600 a 6.000 €</td></tr></table>
+<h2 id="milano">Cosa cambia a Milano?</h2><p>A Milano il CIN si affianca agli altri obblighi di chi affitta per brevi periodi: comunicazione degli ospiti ad Alloggiati Web, imposta di soggiorno del Comune e dati ISTAT. Se l'immobile ha già il CIR lombardo, la richiesta sulla BDSR parte dai dati già registrati.</p>
+<p>Con la <a href="/servizi/gestione-completa/">gestione completa</a> di GAB queste <a href="/servizi/pratiche-cin-burocrazia/">pratiche</a> sono comprese nella commissione del 15% sugli incassi, senza costi fissi: vedi <a href="/guide/commissioni-property-manager-milano/">quanto costa un property manager a Milano</a>.</p>''',
           [('Il CIN costa qualcosa?', 'No, la richiesta sulla BDSR è gratuita. Costano solo eventuali dispositivi di sicurezza da installare.'),
-           ('Serve il CIN anche per il medio termine?', 'Il CIN riguarda le locazioni brevi e turistiche. Per i contratti transitori sopra i 30 giorni si applicano le regole delle locazioni ordinarie.')])
+           ('Serve il CIN anche per una sola notte?', 'Sì. Il CIN è obbligatorio per ogni affitto breve, cioè fino a 30 giorni, anche per una notte e anche se affitti solo tramite Airbnb o Booking.'),
+           ('Cosa rischio se affitto senza CIN?', 'Una sanzione da 800 a 8.000 €. Se il CIN c\'è ma non è indicato negli annunci o all\'esterno dell\'edificio, la sanzione va da 500 a 5.000 €.'),
+           ('Serve il CIN anche per il medio termine?', 'Il CIN riguarda le locazioni brevi e turistiche. Per i contratti transitori sopra i 30 giorni si applicano le regole delle locazioni ordinarie.'),
+           ('Se affido la casa a GAB chi richiede il CIN?', 'Lo richiediamo noi sulla BDSR e lo inseriamo negli annunci. È compreso nella gestione al 15% sugli incassi, insieme ad Alloggiati Web e imposta di soggiorno.')],
+          updated='2026-11-05')
 
     guide('affitto-breve-o-medio-termine', 'Affitto breve o medio termine a Milano: quale rende di più | GAB',
           'Affitto breve o medio termine: quale rende di più a Milano',

@@ -285,7 +285,7 @@ def build():
     body = f'''<section class="hero"><div class="wrap grid"><div>
 <span class="eyebrow">Porta Venezia · Centrale · NoLo · viale Monza · Bicocca</span>
 <h1>Gestione affitti brevi a Milano, da Porta Venezia a Bicocca. <em>Più rendita, zero pensieri.</em></h1>
-<p class="lead">Siamo una boutique agency: pochi appartamenti selezionati, seguiti personalmente. Pensiamo a tutto noi, da annuncio e prezzi a ospiti, pulizie e burocrazia. Tu ricevi l'incasso ogni mese e un report chiaro.</p>
+<p class="lead">Siamo una boutique agency di gestione affitti brevi a Milano: 9 appartamenti seguiti personalmente, 15% sugli incassi per l'affitto breve e 10% per il medio termine, nessun costo fisso. Pensiamo a tutto noi, da annuncio e prezzi a ospiti, pulizie e burocrazia. Tu ricevi l'incasso ogni mese e un report chiaro.</p>
 <div class="ctas"><a class="btn btn-primary" href="#calcola">Calcola quanto rende</a><a class="btn btn-wa" href="{WA}?text=Ciao%20GAB%2C%20vorrei%20info%20sulla%20gestione%20del%20mio%20appartamento">WhatsApp</a></div>
 <ul class="checks"><li>Un referente diretto, non un call center</li><li>Affitto breve o medio termine: scegliamo la formula che rende di più</li><li>Nessun vincolo: disdici con 30 giorni di preavviso</li></ul>
 </div>{calc_form()}</div>{linea()}</section>
@@ -294,6 +294,19 @@ def build():
 <div><strong>4,9★</strong><span>voto medio ospiti su Airbnb</span></div>
 <div><strong>95%</strong><span>occupazione nel medio termine</span></div>
 <div><strong style="font-size:1.2rem;padding-top:10px">Airbnb · Booking · Vrbo</strong><span>più booking diretto</span></div>
+</div></section>
+<section class="section soft"><div class="wrap prose"><span class="eyebrow">In sintesi</span><h2>Come funziona la gestione affitti brevi a Milano con GAB?</h2>
+{inbreve("GAB gestisce affitti brevi e a medio termine a Milano lungo l'asse da Porta Venezia a Bicocca. Ci occupiamo di annuncio, prezzi, ospiti, check-in, pulizie e pratiche come CIN e Alloggiati Web. Costa il 15% sugli incassi per l'affitto breve e il 10% per il medio termine, senza costi fissi e con disdetta a 30 giorni.")}
+<table><thead><tr><th>Voce</th><th>Con GAB</th></tr></thead><tbody>
+<tr><td>Commissione affitto breve</td><td>15% sugli incassi</td></tr>
+<tr><td>Commissione medio termine</td><td>10% sugli incassi</td></tr>
+<tr><td>Costi fissi</td><td>Nessuno</td></tr>
+<tr><td>Disdetta</td><td>30 giorni di preavviso</td></tr>
+<tr><td>Pulizie tra un ospite e l'altro</td><td>Pagate dall'ospite</td></tr>
+<tr><td>Appartamenti seguiti</td><td>9</td></tr>
+<tr><td>Zone di Milano</td><td>{", ".join(z[2] for z in ZONES)}</td></tr>
+</tbody></table>
+<p><a href="/prezzi/">Cosa è incluso nel prezzo</a> · <a href="/servizi/gestione-completa/">La gestione completa</a> · <a href="/zone/">Le zone servite</a></p>
 </div></section>
 <section class="section"><div class="wrap split">
 <div class="photo">{picture('vito-hero', [1200, 700], 'Vito Semeraro, fondatore di GAB', '(max-width:900px) 100vw, 560px')}</div>
@@ -329,8 +342,8 @@ def build():
 {rev_html}
 {faq_html}
 {contact_band()}'''
-    add('/', 'Gestione affitti brevi Milano: Porta Venezia, NoLo, Bicocca',
-        'Boutique agency di affitti brevi e medio termine a Milano, da Porta Venezia a Bicocca. Commissione 15%, voto ospiti 4,9. Calcola gratis la rendita.',
+    add('/', 'Gestione affitti brevi Milano | 15% e nessun costo fisso',
+        'Gestione affitti brevi a Milano da Porta Venezia a Bicocca: 9 appartamenti seguiti, 15% sugli incassi, 10% nel medio termine, nessun costo fisso.',
         body, ld_items=[faq_ld, {"@type": "WebSite", "@id": SITE + "/#web", "url": SITE + "/", "name": "GAB Gestione Affitti Brevi", "inLanguage": "it-IT"}] + rev_ld,
         scripts=[CALC_JS, TABS_JS, MAP_JS], priority='1.0')
 

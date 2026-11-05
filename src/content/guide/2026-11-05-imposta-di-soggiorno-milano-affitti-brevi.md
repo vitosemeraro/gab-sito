@@ -1,12 +1,12 @@
 ---
-titolo: Imposta di soggiorno a Milano per affitti brevi: tariffa, esenzioni, chi la versa
-titolo_seo: Imposta di soggiorno Milano affitti brevi 2026 | GAB
-descrizione: Imposta di soggiorno a Milano per affitti brevi nel 2026: 9,50 € a persona per notte, massimo 14 notti, esenzioni, chi la incassa e cosa fa Airbnb.
+titolo: Tassa di soggiorno a Milano per affitti brevi: tariffa 2026, esenzioni, chi la versa
+titolo_seo: Tassa di soggiorno Milano 2026 affitti brevi | GAB
+descrizione: Tassa di soggiorno a Milano per affitti brevi nel 2026: 9,50 € a persona per notte, massimo 14 notti, esenzioni, chi la incassa e cosa fa Airbnb.
 sommario: Nel 2026 a Milano chi affitta per pochi giorni deve far pagare agli ospiti 9,50 € a persona per notte. Ecco come funziona e chi la versa al Comune.
-in_breve: Nel 2026 l'imposta di soggiorno a Milano per case vacanza, locazioni brevi e B&B è di 9,50 € a persona per notte, per un massimo di 14 notti consecutive. La paga l'ospite. Sulle prenotazioni Airbnb la riscuote e la versa la piattaforma; per Booking, prenotazioni dirette e altri canali la incassa il gestore e la versa al Comune tramite SoggiorniAmo.
-aggiornato: 2026-11-02
+in_breve: Nel 2026 la tassa (imposta) di soggiorno a Milano per case vacanza, locazioni brevi e B&B è di 9,50 € a persona per notte, per un massimo di 14 notti consecutive. La paga l'ospite. Sulle prenotazioni Airbnb la riscuote e la versa la piattaforma; per Booking, prenotazioni dirette e altri canali la incassa il gestore e la versa al Comune tramite SoggiorniAmo.
+aggiornato: 2026-11-05
 ---
-L'imposta di soggiorno la paga l'ospite, ma la responsabilità di incassarla e versarla al Comune è di chi gestisce l'appartamento. Nel 2026 a Milano è salita molto, quindi conviene sapere quanto vale, chi la versa e quando non è dovuta.
+L'imposta di soggiorno, che tutti chiamano tassa di soggiorno, la paga l'ospite, ma la responsabilità di incassarla e versarla al Comune è di chi gestisce l'appartamento. Nel 2026 a Milano è salita molto, quindi conviene sapere quanto vale, chi la versa e quando non è dovuta.
 
 ## Quanto si paga nel 2026
 
@@ -76,6 +76,9 @@ Nella [gestione completa](/servizi/gestione-completa/) l'imposta di soggiorno è
 Gestiamo appartamenti tra Porta Venezia e Bicocca: per esempio vicino alla [Stazione Centrale](/zone/stazione-centrale/), dove molti ospiti restano poche notti per lavoro.
 
 ## Domande frequenti
+
+### Tassa di soggiorno e imposta di soggiorno sono la stessa cosa?
+Sì. Il nome ufficiale nel regolamento del Comune di Milano è imposta di soggiorno, ma nel linguaggio comune si dice tassa di soggiorno: tariffe, esenzioni e regole sono le stesse.
 
 ### Quanto è l'imposta di soggiorno a Milano per un affitto breve?
 Nel 2026 è di 9,50 € a persona per notte, per un massimo di 14 notti consecutive nello stesso appartamento.

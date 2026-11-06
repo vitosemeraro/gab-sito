@@ -276,6 +276,7 @@ def build():
     rev_html, rev_ld = reviews_section()
     faq_html, faq_ld = faq_section([
         ('Quanto costa la gestione degli affitti brevi a Milano?', 'Il 15% sugli incassi per l\'affitto breve e il 10% per il medio termine. Nessun costo fisso: guadagniamo solo se guadagni tu. <a href="/prezzi/">Vedi cosa è incluso</a>.'),
+        ('Cosa è incluso nella gestione?', 'Nell\'affitto breve: annunci su Airbnb, Booking e Vrbo, prezzi dinamici, messaggi con gli ospiti 7 giorni su 7, check-in, coordinamento pulizie e biancheria, CIN, Alloggiati Web, imposta di soggiorno e report mensile. <a href="/prezzi/">Dettagli</a>.'),
         ('Posso disdire quando voglio?', 'Sì, con 30 giorni di preavviso. Nessun vincolo pluriennale.'),
         ('Meglio affitto breve o medio termine?', 'Dipende da casa, zona e da quanto vuoi usarla. Nel nostro esempio il medio termine rende circa 350 € in più al mese, ma l\'affitto breve è più flessibile. <a href="/guide/affitto-breve-o-medio-termine/">Ecco il confronto</a>.'),
         ('Serve il codice CIN per affittare su Airbnb?', 'Sì, è obbligatorio per tutti gli affitti brevi e va esposto negli annunci. Lo richiediamo noi per te. <a href="/guide/codice-cin-affitti-brevi/">Guida al CIN</a>.'),
@@ -622,7 +623,13 @@ def build_misc():
                 'Paghi solo una percentuale su quello che incassi. Nessun costo fisso, disdetta con 30 giorni di preavviso.', inner,
                 'Prezzi gestione affitti brevi Milano: 15% e 10% | GAB',
                 'Quanto costa la gestione affitti brevi a Milano: 15% sugli incassi per l\'affitto breve, 10% per il medio termine. Nessun costo fisso.',
-                faqs=[('Ci sono costi di attivazione?', 'No. Eventuali servizi extra come il servizio fotografico vengono concordati prima.'), ('Su cosa si calcola il 15%?', 'Sugli incassi delle prenotazioni di affitto breve. Ti mandiamo ogni mese il dettaglio nel report.')], priority='0.9')
+                faqs=[('Quanto costa la gestione affitti brevi a Milano?', 'Il 15% sugli incassi per l\'affitto breve e il 10% sul canone per il medio termine (30+ notti). Nessun costo fisso o canone mensile.'),
+                      ('Cosa è incluso nel 15%?', 'Annunci su Airbnb, Booking e Vrbo, prezzi dinamici ogni giorno, messaggi con gli ospiti 7 giorni su 7, check-in di persona o self check-in, coordinamento pulizie e biancheria, CIN, Alloggiati Web, imposta di soggiorno e report mensile.'),
+                      ('Cosa è incluso nel 10% del medio termine?', 'Selezione e verifica degli inquilini, contratto transitorio e registrazione, check-in, inventario e check-out, assistenza e manutenzioni, booking diretto e report mensile.'),
+                      ('Ci sono costi di attivazione?', 'No. Eventuali servizi extra come il servizio fotografico vengono concordati prima.'),
+                      ('Su cosa si calcola il 15%?', 'Sugli incassi delle prenotazioni di affitto breve. Ti mandiamo ogni mese il dettaglio nel report.'),
+                      ('Chi paga le pulizie e le commissioni dei portali?', 'Le pulizie tra un ospite e l\'altro le paga l\'ospite con la tariffa di pulizia. Le commissioni di Airbnb e Booking sull\'affitto breve restano a carico del proprietario.'),
+                      ('Quanto preavviso serve per disdire?', '30 giorni. Puoi interrompere la gestione in qualsiasi momento, senza vincoli pluriennali.')], priority='0.9')
 
     # chi siamo
     inner = f'''<section class="section" style="padding-top:10px"><div class="wrap split">

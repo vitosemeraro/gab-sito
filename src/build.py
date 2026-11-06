@@ -495,9 +495,6 @@ def build_services():
         ('/property-manager-milano/', 'Property manager Milano', 'Property manager a Milano per affitti brevi e medio termine',
          'Property manager Milano per affitti brevi | GAB', 'Cerchi un property manager a Milano? Boutique agency per appartamenti tra Porta Venezia e Bicocca: gestione completa, 15% di commissione, voto ospiti 4,9.',
          'Un property manager si occupa della tua casa come farebbe un albergatore: prezzi, ospiti, pulizie, manutenzioni e burocrazia. La differenza tra un buon gestore e uno qualsiasi si vede nelle recensioni e nel netto che ti resta a fine mese.'),
-        ('/gestione-airbnb-milano/', 'Gestione Airbnb Milano', 'Gestione Airbnb a Milano: affidaci il tuo annuncio',
-         'Gestione Airbnb Milano: co-host per il tuo annuncio | GAB', 'Gestione Airbnb a Milano nord-est: annuncio, prezzi dinamici, messaggi, check-in e pulizie. Host da oltre 10 anni, voto medio 4,9. Commissione 15%.',
-         'Siamo host su Airbnb da oltre 10 anni. Possiamo prendere in mano il tuo annuncio come co-host, oppure crearne uno nuovo partendo da foto e testi, e portarlo anche su Booking e Vrbo.'),
     ]:
         rev_html, rev_ld = reviews_section('Le recensioni dei nostri ospiti', 3)
         inner = f'''<section class="section" style="padding-top:10px"><div class="wrap split"><div class="prose">
@@ -508,6 +505,47 @@ def build_services():
 </div><div class="photo">{picture('vito-telefono', [640, 400], 'Vito Semeraro gestisce le prenotazioni dal telefono', '(max-width:900px) 100vw, 520px')}</div></div></section>{rev_html}'''
         simple_page(path, [H, (name, None)], name, h1, 'Boutique agency tra Porta Venezia, Centrale, NoLo, viale Monza, Precotto e Bicocca.', inner, title, desc,
                     extra_ld=[service_ld(name, desc, path)] + rev_ld, priority='0.9')
+
+    # gestione Airbnb: pagina estesa (consiglio regia gab-20261105-5)
+    path = '/gestione-airbnb-milano/'
+    ga_desc = 'Gestione Airbnb a Milano nord-est: annuncio, prezzi dinamici, messaggi, check-in e pulizie. Host da oltre 10 anni, voto medio 4,9. Commissione 15%.'
+    rev_html, rev_ld = reviews_section('Le recensioni dei nostri ospiti', 3)
+    brief = inbreve("GAB gestisce il tuo annuncio Airbnb a Milano come co-host, tra Porta Venezia e Bicocca: prezzi aggiornati ogni giorno, messaggi con gli ospiti, "
+                    "check-in, pulizie e pratiche CIN e Alloggiati Web. Paghi il 15% sugli incassi dell'affitto breve (10% per il medio termine), "
+                    "senza costi fissi, e puoi disdire con 30 giorni di preavviso.")
+    inner = f'''<section class="section" style="padding-top:10px"><div class="wrap split"><div class="prose">
+{brief}
+<p>Siamo host su Airbnb da oltre 10 anni. Possiamo prendere in mano il tuo annuncio come co-host, oppure crearne uno nuovo partendo da foto e testi, e portarlo anche su Booking e Vrbo.</p>
+<h2>Cosa fa un gestore Airbnb per te?</h2>
+<ul class="incl"><li><strong>Annuncio</strong>: titolo, testi in italiano e inglese, foto, regole della casa e servizi in evidenza</li><li><strong>Prezzi dinamici</strong> aggiornati ogni giorno, con i picchi di Fashion Week, Salone del Mobile e fiere</li><li><strong>Messaggi con gli ospiti</strong> 7 giorni su 7, in 5 lingue</li><li><strong>Check-in</strong> di persona o self check-in con serratura smart</li><li><strong>Pulizie e biancheria</strong> tra un ospite e l'altro, con fornitori di zona</li><li><strong>Manutenzioni</strong> piccole e urgenti, sempre concordate con te</li><li><strong>Burocrazia</strong>: codice CIN, Alloggiati Web, imposta di soggiorno e dati ISTAT</li><li><strong>Report mensile</strong> con prenotazioni, incassi, costi e la nostra commissione</li></ul>
+</div><div class="photo">{picture('vito-telefono', [640, 400], 'Vito Semeraro gestisce le prenotazioni Airbnb dal telefono', '(max-width:900px) 100vw, 520px')}</div></div></section>
+<section class="section soft"><div class="wrap prose">
+<h2>Chi fa cosa: tu o noi?</h2>
+<table><tr><th>Attività</th><th>Chi se ne occupa</th><th>Chi paga</th></tr>
+<tr><td>Annuncio, prezzi e messaggi</td><td>GAB</td><td>Compreso nella commissione</td></tr>
+<tr><td>Check-in e assistenza agli ospiti</td><td>GAB</td><td>Compreso nella commissione</td></tr>
+<tr><td>Pulizie tra un ospite e l'altro</td><td>GAB, con fornitori di zona</td><td>L'ospite, con la tariffa di pulizia</td></tr>
+<tr><td>CIN, Alloggiati Web, imposta di soggiorno</td><td>GAB</td><td>Compreso nella commissione</td></tr>
+<tr><td>Commissione di Airbnb</td><td>Trattenuta dal portale</td><td>Proprietario</td></tr>
+<tr><td>Utenze, condominio e tasse sull'immobile</td><td>Proprietario</td><td>Proprietario</td></tr>
+<tr><td>Acquisti e riparazioni</td><td>GAB, dopo il tuo ok</td><td>Proprietario</td></tr></table>
+<h2>Quanto costa la gestione Airbnb a Milano?</h2>
+<p>Il <strong>15% sugli incassi</strong> dell'affitto breve e il <strong>10%</strong> per il medio termine. Nessun costo fisso né di attivazione, disdetta con 30 giorni di preavviso. Per un confronto con le altre formule di mercato leggi la guida sulle <a href="/guide/commissioni-property-manager-milano/">commissioni dei property manager a Milano</a>, oppure vai ai <a href="/prezzi/">prezzi</a>.</p>
+<h2>Come si parte?</h2>
+<ol><li><strong>Call di 30 minuti</strong>: mi racconti la casa e cosa ti aspetti.</li><li><strong>Sopralluogo e stima</strong>: affitto breve e medio termine a confronto, con numeri reali della zona.</li><li><strong>Annuncio</strong>: ti aggiungiamo come co-host al tuo annuncio Airbnb, oppure lo creiamo da zero.</li><li><strong>Pratiche</strong>: CIN, Alloggiati Web e imposta di soggiorno, se non sono già attivi.</li><li><strong>Prime prenotazioni</strong> e report a fine mese.</li></ol>
+<p>Vuoi capire prima se conviene? Leggi il confronto tra <a href="/guide/affitto-breve-o-medio-termine/">affitto breve e medio termine</a> e la guida al <a href="/guide/codice-cin-affitti-brevi/">codice CIN</a>.</p>
+<h2>In quali zone di Milano lavoriamo?</h2><p>{', '.join(f'<a href="/zone/{z[0]}/">{z[2]}</a>' for z in ZONES)}. Lavoriamo solo qui per poter intervenire in giornata.</p>
+<div class="note">Vuoi sapere quanto può rendere la tua casa su Airbnb? <a href="/calcola-rendita/">Usa il calcolatore</a> o <a href="{CAL}">prenota una call di 30 minuti</a>.</div>
+</div></section>{rev_html}'''
+    simple_page(path, [H, ('Gestione Airbnb Milano', None)], 'Gestione Airbnb Milano', 'Gestione Airbnb a Milano: affidaci il tuo annuncio',
+                'Boutique agency tra Porta Venezia, Centrale, NoLo, viale Monza, Precotto e Bicocca.', inner,
+                'Gestione Airbnb Milano: co-host per il tuo annuncio | GAB', ga_desc,
+                faqs=[('Devo cedere il mio account Airbnb?', 'No. Con la funzione co-host di Airbnb ci aggiungi al tuo annuncio: l\'account, le recensioni e gli incassi restano tuoi.'),
+                      ('Quanto costa la gestione del mio annuncio Airbnb?', 'Il 15% sugli incassi dell\'affitto breve, il 10% per il medio termine. Nessun costo fisso, disdetta con 30 giorni.'),
+                      ('Chi paga le pulizie?', 'L\'ospite, con la tariffa di pulizia indicata nell\'annuncio.'),
+                      ('Gestite anche Booking e Vrbo?', 'Sì. Portiamo l\'annuncio anche su Booking e Vrbo con i calendari sincronizzati, per evitare doppie prenotazioni.'),
+                      ('Lavorate in tutta Milano?', 'No, solo lungo la M1 e viale Monza, da Porta Venezia a Bicocca: così siamo sempre a pochi minuti da ogni casa.')],
+                extra_ld=[service_ld('Gestione Airbnb Milano', ga_desc, path)] + rev_ld, priority='0.9')
 
 ZONE_TXT = {
  'porta-venezia': dict(

@@ -73,7 +73,10 @@ ORG = {"@type": "LocalBusiness", "@id": SITE + "/#gab", "name": "GAB Gestione Af
        **({"sameAs": SAME_AS} if SAME_AS else {}),
        "description": "Boutique agency di gestione affitti brevi e a medio termine a Milano, da Porta Venezia a Bicocca.",
        "address": {"@type": "PostalAddress", "addressLocality": "Milano", "addressRegion": "MI", "addressCountry": "IT"},
-       "areaServed": [z[2] + ', Milano' for z in ZONES]}
+       "areaServed": [{"@type": "City", "@id": SITE + "/#milano", "name": "Milano", "sameAs": "https://www.wikidata.org/wiki/Q490"}] +
+                     [{"@type": "Place", "name": z[2] + ', Milano', "url": SITE + '/zone/' + z[0] + '/',
+                       "geo": {"@type": "GeoCoordinates", "latitude": z[3], "longitude": z[4]},
+                       "containedInPlace": {"@id": SITE + "/#milano"}} for z in ZONES]}
 
 def crumbs_ld(items):
     return {"@type": "BreadcrumbList", "itemListElement": [

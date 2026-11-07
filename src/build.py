@@ -173,7 +173,7 @@ def page(path, title, desc, body, ld_items=(), scripts=(), og_image='/img/vito-h
 <p style="margin-top:14px">GAB Gestione Affitti Brevi<br>Boutique agency di Vito Semeraro<br>Milano, da Porta Venezia a Bicocca<br><a href="tel:{TEL}">{TEL_H}</a><br><a href="mailto:{MAIL}">{MAIL}</a></p></div>
 <div><h2>Servizi</h2><ul><li><a href="/servizi/gestione-completa/">Gestione completa</a></li><li><a href="/servizi/medio-termine/">Affitti a medio termine</a></li><li><a href="/property-manager-milano/">Property manager Milano</a></li><li><a href="/gestione-airbnb-milano/">Gestione Airbnb Milano</a></li><li><a href="/servizi/consulenza-home-staging/">Home staging con AI</a></li><li><a href="/servizi/marketing-affitti-brevi/">Marketing e prenotazioni dirette</a></li><li><a href="/prezzi/">Prezzi</a></li></ul></div>
 <div><h2>Zone</h2><ul>{''.join(f'<li><a href="/zone/{z[0]}/">{z[2]}</a></li>' for z in ZONES)}</ul></div>
-<div><h2>Guide</h2><ul><li><a href="/guide/cedolare-secca-affitti-brevi/">Cedolare secca 2026</a></li><li><a href="/guide/codice-cin-affitti-brevi/">Codice CIN</a></li><li><a href="/guide/affitto-breve-o-medio-termine/">Breve o medio termine?</a></li><li><a href="/calcola-rendita/">Calcola la rendita</a></li><li><a href="/privacy/">Privacy</a></li><li><a href="/privacy/#cookie" data-ck>Preferenze cookie</a></li></ul></div>
+<div><h2>Guide</h2><ul><li><a href="/guide/cedolare-secca-affitti-brevi/">Cedolare secca 2026</a></li><li><a href="/guide/codice-cin-affitti-brevi/">Codice CIN</a></li><li><a href="/guide/affitto-breve-o-medio-termine/">Breve o medio termine?</a></li><li><a href="/calcola-rendita/">Calcola la rendita</a></li><li><a href="/eventi/">Eventi</a></li><li><a href="/privacy/">Privacy</a></li><li><a href="/privacy/#cookie" data-ck>Preferenze cookie</a></li></ul></div>
 </div><div class="wrap" style="margin-top:30px;font-size:.8rem;opacity:.7">© {date.today().year} GAB Gestione Affitti Brevi · Recensioni da Airbnb, pubblicate dagli ospiti</div></footer>
 {CK_HTML}
 <div class="mobilebar"><a class="btn btn-ghost" href="tel:{TEL}">Chiama</a><a class="btn btn-wa" href="{WA}">WhatsApp</a></div>
@@ -351,8 +351,46 @@ def build():
         body, ld_items=[faq_ld, {"@type": "WebSite", "@id": SITE + "/#web", "url": SITE + "/", "name": "GAB Gestione Affitti Brevi", "inLanguage": "it-IT"}] + rev_ld,
         scripts=[CALC_JS, TABS_JS, MAP_JS], priority='1.0')
 
-    build_services(); build_zones(); build_misc(); build_guides()
+    build_services(); build_zones(); build_misc(); build_guides(); build_events()
     build_seo_files()
+
+
+# ---------------- EVENTI ----------------
+# Ogni evento è un frammento in src/content/eventi/AAAA-MM-GG-slug.html con tre parti: <!--CSS-->, <!--HTML-->, <!--JS-->.
+# Classi e CSS sono prefissati (.ev / ev-) per non toccare lo stile del resto del sito.
+EVENTI = [
+    ('2026-11-10-meetup-ai-host-milano', 'meetup-ai-host-milano-2026',
+     'Da host a builder: AI per host a Milano',
+     'Meetup online Airbnb Community Milano, 10 novembre 2026',
+     'Cosa fa davvero l\'AI in 9 appartamenti a Milano: registrazione ospiti, statistiche degli annunci, sito diretto e foto. Requisiti, limiti, conti e prompt da copiare.'),
+]
+
+def build_events():
+    H = ('Home', '/'); E = ('Eventi', '/eventi/')
+    cards = ''
+    for fname, slug, h1, sub, desc in EVENTI:
+        raw = open(os.path.join(HERE, 'content', 'eventi', fname + '.html'), encoding='utf-8').read()
+        css = raw.split('<!--CSS-->')[1].split('<!--HTML-->')[0]
+        body = raw.split('<!--HTML-->')[1].split('<!--JS-->')[0]
+        js = raw.split('<!--JS-->')[1]
+        day = fname[:10]
+        path = f'/eventi/{slug}/'
+        crumbs = [H, E, (h1, None)]
+        inner = (f'<style>{css}</style>\n<div class="ev"><div class="ev-wrap" style="padding-top:18px">{crumbs_html(crumbs)}</div>\n{body}\n'
+                 '<section><div class="ev-wrap"><p style="font-size:.9rem;color:var(--muted)">Claude è un prodotto di Anthropic. '
+                 "Questa pagina racconta l'esperienza di Vito come host e non è affiliata ad Airbnb né ad Anthropic.</p></div></section>\n"
+                 f'</div>\n{contact_band()}')
+        event_ld = {"@type": "Event", "name": h1, "description": desc, "startDate": f"{day}T18:00:00+01:00", "endDate": f"{day}T19:00:00+01:00",
+                    "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode", "eventStatus": "https://schema.org/EventScheduled",
+                    "location": {"@type": "VirtualLocation", "url": SITE + path}, "inLanguage": "it-IT",
+                    "performer": {"@type": "Person", "name": "Vito Semeraro", "url": SITE + "/chi-siamo/"}, "organizer": {"@id": SITE + "/#gab"}}
+        add(path, f'{h1} | Eventi GAB', desc, inner, ld_items=[crumbs_ld(crumbs), event_ld], scripts=[js], priority='0.6')
+        cards += f'<a class="card service" href="{path}"><span class="small">{sub}</span><h3>{h1}</h3><p>{desc}</p><span>Apri →</span></a>'
+    inner = f'<section class="section" style="padding-top:10px"><div class="wrap"><div class="grid3 cards-link">{cards}</div></div></section>'
+    simple_page('/eventi/', [H, ('Eventi', None)], 'Eventi', 'Eventi e interventi di GAB',
+                'Meetup e incontri in cui raccontiamo come gestiamo gli affitti brevi a Milano, AI compresa.', inner,
+                'Eventi su affitti brevi e AI a Milano | GAB',
+                'Meetup e interventi di Vito Semeraro (GAB) su affitti brevi, AI per host e gestione degli appartamenti a Milano.', priority='0.5')
 
 
 def simple_page(path, crumbs, eyebrow, h1, lead, inner, title, desc, faqs=None, extra_ld=(), scripts=(), band=True, priority='0.7', zone_text=''):

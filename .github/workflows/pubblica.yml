@@ -52,6 +52,18 @@ jobs:
         run: |
           echo "::warning::Secrets FTP non impostati, il sito è stato generato e controllato ma non caricato. La routine del lunedì lo pubblica da cPanel."
 
+      - name: Diagnostica cartella FTP
+        if: github.event_name == 'workflow_dispatch' && env.HAS_FTP == 'true'
+        env:
+          FTP_HOST: ${{ secrets.FTP_HOST }}
+          FTP_USER: ${{ secrets.FTP_USER }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          FTP_DIR: ${{ secrets.FTP_DIR }}
+        run: |
+          sudo apt-get install -y -qq lftp > /dev/null
+          echo "FTP_DIR length: ${#FTP_DIR}"
+          lftp -u "$FTP_USER","$FTP_PASSWORD" "$FTP_HOST" -e "set ftp:ssl-force true; set ftp:ssl-protect-data true; set ssl:verify-certificate yes; pwd; cls -1 --sort=date | head -40; echo ---DIR---; cd ${FTP_DIR:-public_html}; pwd; cls -1; echo ---SOTTO---; cls -1 public_html/ | head -40; echo ---EVENTI---; cls -l eventi/; echo ---SITEMAP---; cat sitemap.xml | head -c 300; bye" || true
+
       - name: Carica su Netsons (FTPS)
         if: steps.oggi.outputs.vai == 'si' && env.HAS_FTP == 'true'
         env:

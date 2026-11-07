@@ -62,7 +62,9 @@ jobs:
         run: |
           sudo apt-get install -y -qq lftp > /dev/null
           # mirror senza --delete: sul server restano le cartelle che non sono del sito (homestaged-AI, .well-known, cgi-bin)
-          lftp -u "$FTP_USER","$FTP_PASSWORD" "$FTP_HOST" -e "set ftp:ssl-force true; set ftp:ssl-protect-data true; set ssl:verify-certificate yes; mirror -R --parallel=4 --no-perms src/dist ${FTP_DIR:-public_html}; bye"
+          # L'utente FTP entra già nella cartella del sito (public_html), quindi si carica nella cartella di login.
+          # Fino al 7/11/2026 si usava FTP_DIR=public_html e i file finivano in public_html/public_html, mai online.
+          lftp -u "$FTP_USER","$FTP_PASSWORD" "$FTP_HOST" -e "set ftp:ssl-force true; set ftp:ssl-protect-data true; set ssl:verify-certificate yes; mirror -R --parallel=4 --no-perms src/dist .; bye"
 
       - name: Avvisa i motori (IndexNow)
         if: steps.oggi.outputs.vai == 'si' && env.HAS_FTP == 'true'

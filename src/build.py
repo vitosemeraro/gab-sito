@@ -587,6 +587,8 @@ def build_services():
 
 ZONE_TXT = {
  'porta-venezia': dict(
+  title='Gestione affitti brevi Porta Venezia: 15%, zero costi fissi',
+  desc='Gestione affitti brevi e Airbnb a Porta Venezia e Lima: 15% sugli incassi, nessun costo fisso, disdetta con 30 giorni. Calcola quanto rende la tua casa.',
   h1='Gestione affitti brevi a Porta Venezia e Lima',
   lead='Tra corso Buenos Aires, i Giardini Montanelli e il Lazzaretto: una delle zone più richieste di Milano da turisti e viaggiatori d\'affari.',
   why=[('🛍️ Shopping e centro a piedi', 'Corso Buenos Aires è una delle vie dello shopping più lunghe d\'Europa e il Duomo è a 3 fermate di M1.'),
@@ -596,6 +598,8 @@ ZONE_TXT = {
   faq=[('Conviene l\'affitto breve a Porta Venezia?', 'Sì: domanda turistica tutto l\'anno e tariffe alte. Il medio termine resta un\'ottima alternativa nei mesi più tranquilli.'),
        ('Ci sono limiti agli affitti brevi a Milano?', 'Oggi no oltre agli obblighi nazionali (CIN, Alloggiati Web, imposta di soggiorno) e alle regole del condominio. Li verifichiamo insieme.')]),
  'stazione-centrale': dict(
+  title='Gestione affitti brevi Stazione Centrale: 15%, zero fissi',
+  desc='Gestione affitti brevi in zona Stazione Centrale: 15% sugli incassi, nessun costo fisso, check-in di persona o smart. Calcola quanto rende la tua casa.',
   h1='Gestione affitti brevi in zona Stazione Centrale',
   lead='Treni, metro M2 e M3, bus per gli aeroporti: chi arriva a Milano cerca casa qui, anche solo per una o due notti.',
   why=[('✈️ Aeroporti e treni', 'Bus e Malpensa Express per gli aeroporti, Frecce e Italo per tutta Italia: perfetto per soggiorni brevi.'),
@@ -605,6 +609,8 @@ ZONE_TXT = {
   faq=[('Le notti brevi convengono?', 'Sì, se la tariffa include bene la pulizia e il check-in è automatizzato. Impostiamo soggiorni minimi diversi per giorni feriali e weekend.'),
        ('La zona è sicura per gli ospiti?', 'Scegliamo con cura le informazioni sul percorso da metro e stazione e le inseriamo nella guida della casa.')]),
  'loreto-nolo': dict(
+  title='Gestione affitti brevi NoLo e Loreto: 15%, zero costi fissi',
+  desc='Gestione affitti brevi e Airbnb a NoLo, Loreto e Pasteur: 15% sugli incassi, nessun costo fisso, disdetta con 30 giorni. Calcola quanto rende la tua casa.',
   h1='Gestione affitti brevi a NoLo e Loreto',
   lead='Tra piazzale Loreto, via Padova e viale Monza: incrocio di M1 e M2, a 10 minuti a piedi dalla Stazione Centrale.',
   why=[('🚆 Vicino a Centrale', 'Loreto, Pasteur e Rovereto sono a una o due fermate da Centrale e dal centro.'),
@@ -614,6 +620,8 @@ ZONE_TXT = {
   faq=[('Meglio affitto breve o medio termine a NoLo?', 'Vicino alle fermate M1 e M2 l\'affitto breve rende di più nei mesi di eventi; il medio termine riempie i periodi più tranquilli.'),
        ('Fate il check-in di persona?', 'Sì, siamo in zona. Offriamo anche il self check-in con serratura smart.')]),
  'viale-monza': dict(
+  title='Gestione affitti brevi Viale Monza: 15%, zero costi fissi',
+  desc='Gestione affitti brevi in viale Monza, Turro e Gorla: 15% sugli incassi, nessun costo fisso, disdetta con 30 giorni. Calcola quanto rende la tua casa.',
   h1='Gestione affitti brevi in viale Monza, Turro e Gorla',
   lead='Lungo la M1 tra Rovereto, Turro e Gorla, a due passi dal Naviglio Martesana. È la zona dove abbiamo iniziato.',
   why=[('🏠 Il nostro primo appartamento', 'Il nostro monolocale sopra la metro Turro ha recensioni a 5 stelle dal 2023: gli ospiti amano la metro sotto casa e la zona tranquilla.'),
@@ -623,6 +631,8 @@ ZONE_TXT = {
   faq=[('Che risultati avete in zona Turro?', 'Il nostro monolocale sopra la metro Turro ha solo recensioni a 5 stelle su Airbnb. "Zona tranquilla vicinissima alla metro rossa" è il commento più frequente.'),
        ('Gestite anche case da ristrutturare?', 'Ti aiutiamo a capire quali lavori servono davvero e quali hanno un ritorno sulle tariffe.')]),
  'precotto-greco': dict(
+  title='Gestione affitti brevi Precotto Greco: 15%, 0 costi fissi',
+  desc='Gestione affitti brevi a Precotto e Greco, Milano: 15% sugli incassi, 10% nel medio termine, nessun costo fisso. Calcola quanto rende la tua casa.',
   h1='Gestione affitti brevi a Precotto e Greco',
   lead='M1 Precotto e Villa San Giovanni, stazione di Greco Pirelli e tram: collegamenti ottimi a pochi minuti da Bicocca.',
   why=[('🏠 I nostri bilocali', 'Gestiamo appartamenti a 350 metri dalla M1 Precotto: occupazione al 71% tra aprile e luglio 2026 e voto 5 su 5 negli ultimi mesi.'),
@@ -632,6 +642,8 @@ ZONE_TXT = {
   faq=[('Quanto rende un bilocale a Precotto?', 'Dipende da formula e arredo. Uno dei nostri bilocali in medio termine rende 1.400 € netti al mese; in affitto breve l\'occupazione è arrivata al 71% in primavera.'),
        ('Lavorate anche a Villa San Giovanni?', 'Sì, è dentro la nostra area lungo la M1.')]),
  'bicocca': dict(
+  title='Gestione affitti brevi Bicocca: 15%, zero costi fissi',
+  desc='Gestione affitti brevi a Bicocca, Milano: 15% sugli incassi, 10% nel medio termine, nessun costo fisso, disdetta con 30 giorni. Calcola la rendita.',
   h1='Gestione affitti brevi a Bicocca',
   lead='Università di Milano-Bicocca, Teatro degli Arcimboldi, Pirelli HangarBicocca e tanti uffici: una zona che vive tutto l\'anno.',
   why=[('🎓 Studenti e docenti', 'Visiting professor, dottorandi e famiglie degli studenti cercano soggiorni medi vicino all\'università.'),
@@ -678,8 +690,8 @@ def build_zones():
 {contact_band(z[2])}'''
         sld = {"@type": "Service", "name": f"Gestione affitti brevi a {z[2]}, Milano", "serviceType": "Property management affitti brevi",
                "provider": {"@id": SITE + "/#gab"}, "areaServed": {"@type": "Place", "name": f"{z[2]}, Milano", "geo": {"@type": "GeoCoordinates", "latitude": z[3], "longitude": z[4]}}}
-        add(f'/zone/{z[0]}/', f'Gestione affitti brevi {z[2]}, Milano | GAB',
-            f'Gestione affitti brevi e Airbnb a {z[2]}, Milano: ospiti, pulizie e CIN. Commissione 15%, medio termine 10%. Calcola la rendita.',
+        # title < 60 e description 140-155 caratteri, con zona, 15% e nessun costo fisso (consiglio regia gab-20261106-0)
+        add(f'/zone/{z[0]}/', t['title'], t['desc'],
             body, ld_items=[crumbs_ld([H, Z, (z[2], None)]), faq_ld, sld] + rev_ld, scripts=[CALC_JS, TABS_JS], priority='0.8')
 
 def build_misc():

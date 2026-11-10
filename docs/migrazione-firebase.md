@@ -17,7 +17,7 @@ tranne il cambio DNS (passo 5) e la disdetta (passo 7), che vanno fatti solo con
   `FIREBASE_PROJECT_ID`, e continua a pubblicare su Netsons finché ci sono i secrets FTP.
 
 ## Passi
-1. **Chiave Web3Forms**: su web3forms.com inserire vsemeraro@gmail.com (direttamente Gmail, così il form non
+1. **Chiave Web3Forms** (fatto il 10/11/2026): su web3forms.com inserire vsemeraro@gmail.com (direttamente Gmail, così il form non
    dipende dalla mail del dominio), copiare la chiave in `WEB3FORMS_KEY`. Il form funziona subito anche su Netsons.
 2. **Progetto Firebase** (stesso account di ram e trullo-rosy): creare il progetto o un nuovo sito Hosting,
    poi un account di servizio con ruolo "Firebase Hosting Admin" e la sua chiave JSON.

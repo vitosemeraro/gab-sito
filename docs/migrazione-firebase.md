@@ -13,16 +13,15 @@ tranne il cambio DNS (passo 5) e la disdetta (passo 7), che vanno fatti solo con
 - Modulo contatti: `WEB3FORMS_KEY` in `src/build.py`. Vuota = si usa ancora `contatti.php` (Netsons).
   Con la chiave il form manda a Web3Forms (gratis, 250 invii al mese) e poi a `/grazie/`; controllo di nome e
   telefono (almeno 6 cifre) nel browser, anti-spam con la casella nascosta `botcheck`.
-- Workflow `pubblica.yml`: pubblica su Firebase se ci sono i secrets `FIREBASE_SERVICE_ACCOUNT` e
-  `FIREBASE_PROJECT_ID`, e continua a pubblicare su Netsons finché ci sono i secrets FTP.
+- Workflow `pubblica.yml`: pubblica sul progetto Firebase `gab-sito` se c'è il secret `FIREBASE_SERVICE_ACCOUNT`, e continua a pubblicare su Netsons finché ci sono i secrets FTP.
 
 ## Passi
 1. **Chiave Web3Forms** (fatto il 10/11/2026): su web3forms.com inserire vsemeraro@gmail.com (direttamente Gmail, così il form non
    dipende dalla mail del dominio), copiare la chiave in `WEB3FORMS_KEY`. Il form funziona subito anche su Netsons.
-2. **Progetto Firebase** (stesso account di ram e trullo-rosy): creare il progetto o un nuovo sito Hosting,
-   poi un account di servizio con ruolo "Firebase Hosting Admin" e la sua chiave JSON.
-3. **Secrets GitHub** del repo: `FIREBASE_SERVICE_ACCOUNT` (il JSON) e `FIREBASE_PROJECT_ID`.
-   Al primo push il sito va online su `https://<progetto>.web.app`: controllarlo lì.
+2. **Progetto Firebase** (fatto il 10/11/2026): progetto `gab-sito` (piano Spark, senza Analytics e Gemini), Hosting attivo,
+   account di servizio `github-deploy@gab-sito.iam.gserviceaccount.com` con ruoli Firebase Hosting Admin e Service Usage Consumer.
+3. **Secret GitHub** del repo: `FIREBASE_SERVICE_ACCOUNT` = chiave JSON di github-deploy (la crea Vito da Cloud Console > Service account > Chiavi).
+   Al primo push il sito va online su https://gab-sito.web.app: controllarlo lì.
 4. **Prima del DNS, la mail**: oggi `hello@gestione-affitti-brevi-milano.it` è un inoltro di cPanel verso Gmail.
    Spenta Netsons, l'inoltro sparisce. Sostituto gratuito: Cloudflare Email Routing (serve spostare i nameserver
    su Cloudflare, dove c'è già l'account di Web Analytics) oppure ImprovMX (bastano due record MX dove sta il DNS).

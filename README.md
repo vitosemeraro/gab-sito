@@ -11,4 +11,4 @@ Sorgente di https://gestione-affitti-brevi-milano.it: sito statico generato da `
 
 In locale: `pip install pillow && python src/build.py && cp -r static/. src/dist/`.
 
-Firebase usa i secrets `FIREBASE_SERVICE_ACCOUNT` e `FIREBASE_PROJECT_ID`; Netsons i secrets `FTP_HOST`, `FTP_USER`, `FTP_PASSWORD` (da togliere dopo il passaggio).
+Firebase (progetto `gab-sito`, sito https://gab-sito.web.app) usa il secret `FIREBASE_SERVICE_ACCOUNT` (chiave JSON dell'account di servizio github-deploy); Netsons i secrets `FTP_HOST`, `FTP_USER`, `FTP_PASSWORD` (da togliere dopo il passaggio).

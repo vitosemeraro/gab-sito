@@ -65,6 +65,8 @@ Tra il 15% e il 25% ci sono 210 € al mese, cioè 2.520 € l'anno sullo stesso
 
 ## Le domande da fare prima di firmare
 
+Per confrontare anche zone, referente, report e gestione fiscale leggi la guida su [come scegliere un'agenzia di affitti brevi a Milano](/guide/come-scegliere-agenzia-affitti-brevi-milano/).
+
 1. Su quale importo si calcola la percentuale?
 2. Chi paga pulizie, biancheria e prodotti per gli ospiti?
 3. Ci sono costi di attivazione o di servizio fotografico?

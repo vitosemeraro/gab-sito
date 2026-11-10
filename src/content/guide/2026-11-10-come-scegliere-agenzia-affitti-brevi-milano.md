@@ -1,14 +1,14 @@
 ---
-titolo: Come scegliere un property manager a Milano: 7 criteri per confrontare le agenzie
-titolo_seo: Come scegliere un property manager a Milano | GAB
-descrizione: Come scegliere un property manager per affitti brevi a Milano: commissione e base di calcolo, zone coperte, preavviso, numero di case, report e fisco.
+titolo: Come scegliere un'agenzia di affitti brevi a Milano: 7 criteri per confrontarle
+titolo_seo: Agenzia affitti brevi Milano: come sceglierla | GAB
+descrizione: Come scegliere un'agenzia di affitti brevi a Milano: commissione e base di calcolo, costi esclusi, zone, preavviso, referente, report e fisco.
 sommario: Due agenzie con la stessa percentuale possono costarti cifre molto diverse e seguirti in modo diverso. Ecco cosa mettere a confronto prima di firmare.
-in_breve: Per scegliere un property manager a Milano confronta sette cose: commissione e su cosa si calcola, costi esclusi, zone in cui lavora davvero, numero di case per referente, preavviso per uscire, report mensile e gestione fiscale degli incassi. Chiedi tutto per scritto e verifica annunci e recensioni delle case che già gestisce.
-aggiornato: 2026-11-09
+in_breve: Per scegliere un'agenzia di affitti brevi a Milano confronta sette cose: commissione e su cosa si calcola, costi esclusi, zone in cui lavora davvero, case per referente, preavviso per uscire, report mensile e gestione fiscale degli incassi. Chiedi tutto per scritto e guarda annunci e recensioni delle case che già gestisce.
+aggiornato: 2026-11-10
 ---
-A Milano le agenzie che gestiscono affitti brevi sono molte, e i siti si somigliano: "gestione completa", "massima rendita", "zero pensieri". Per scegliere servono criteri che puoi verificare. Qui trovi i sette che contano di più, una tabella per confrontare i preventivi e le domande da fare al primo incontro.
+A Milano le agenzie che gestiscono affitti brevi e case su Airbnb sono molte, e i siti si somigliano: "gestione completa", "massima rendita", "zero pensieri". Che la chiami agenzia, property manager o gestore, per scegliere servono criteri che puoi verificare. Qui trovi i sette che contano di più, una tabella per confrontare i preventivi e le domande da fare al primo incontro.
 
-## I 7 criteri in una tabella
+## Quali criteri usare per confrontare le agenzie?
 
 | Criterio | Cosa chiedere | Segnale di attenzione |
 |---|---|---|
@@ -52,7 +52,7 @@ Il rendiconto deve mostrare ogni prenotazione: date, canale, incasso, commission
 
 Se il gestore incassa i canoni per tuo conto, la legge lo tratta come intermediario: deve trattenere la ritenuta del 21% e rilasciarti la Certificazione Unica, come spiega la [guida dell'Agenzia delle Entrate sulle locazioni brevi](https://www.agenziaentrate.gov.it/portale/documents/20143/233439/Locazioni+brevi+it_Guida_Locazioni_brevi.pdf). Chiedi chi incassa le prenotazioni dirette e da Booking, chi versa l'[imposta di soggiorno](/guide/imposta-di-soggiorno-milano-affitti-brevi/) e chi gestisce [CIN e pratiche](/servizi/pratiche-cin-burocrazia/).
 
-## Le domande da fare al primo incontro
+## Cosa chiedere all'agenzia al primo incontro?
 
 1. Su quale importo calcolate la commissione?
 2. Quali costi pago a parte, e quanto?
@@ -64,14 +64,14 @@ Se il gestore incassa i canoni per tuo conto, la legge lo tratta come intermedia
 
 ## Domande frequenti
 
-### Conviene un property manager o gestire da soli?
-Dipende dal tempo che hai e dalla distanza dalla casa. Un gestore costa una percentuale degli incassi, ma si occupa di prezzi, ospiti, pulizie e pratiche. Con il [calcolatore della rendita](/calcola-rendita/) vedi quanto ti resta nei due casi.
+### Conviene affidarsi a un'agenzia o gestire da soli?
+Dipende dal tempo che hai e dalla distanza dalla casa. Un'agenzia costa una percentuale degli incassi, ma si occupa di prezzi, ospiti, pulizie e pratiche. Con il [calcolatore della rendita](/calcola-rendita/) vedi quanto ti resta nei due casi.
 
-### Quanto costa un property manager a Milano?
+### Quanto costa un'agenzia di affitti brevi a Milano?
 Per la gestione completa di solito dal 15 al 25% degli incassi; la sola gestione online parte dal 10%. GAB chiede il 15% sull'affitto breve e il 10% sul medio termine.
 
-### Posso cambiare gestore se non sono soddisfatto?
+### Posso cambiare agenzia se non sono soddisfatto?
 Sì, nei limiti del contratto: per questo conviene controllare la durata minima e il preavviso prima di firmare. Con GAB bastano 30 giorni di preavviso.
 
-### Il property manager deve rilasciare la Certificazione Unica?
+### L'agenzia deve rilasciare la Certificazione Unica?
 Sì, se incassa i canoni per conto del proprietario: in quel caso opera come intermediario, trattiene la ritenuta del 21% e rilascia la CU.

@@ -1,0 +1,130 @@
+{
+  "hosting": {
+    "public": "src/dist",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/*.php"
+    ],
+    "cleanUrls": false,
+    "trailingSlash": true,
+    "redirects": [
+      {
+        "source": "/services{,/}",
+        "destination": "/servizi/",
+        "type": 301
+      },
+      {
+        "source": "/gestione-affitti{,/}",
+        "destination": "/",
+        "type": 301
+      },
+      {
+        "source": "/metti-il-tuo-immobile-a-reddito{,/}",
+        "destination": "/",
+        "type": 301
+      },
+      {
+        "source": "/property-management{,/}",
+        "destination": "/property-manager-milano/",
+        "type": 301
+      },
+      {
+        "source": "/gestione-airbnb{,/}",
+        "destination": "/gestione-airbnb-milano/",
+        "type": 301
+      },
+      {
+        "source": "/affittare-con-airbnb{,/}",
+        "destination": "/gestione-airbnb-milano/",
+        "type": 301
+      },
+      {
+        "source": "/avviare-casa-vacanza{,/}",
+        "destination": "/servizi/consulenza-avvio/",
+        "type": 301
+      },
+      {
+        "source": "/airbnb-cedolare-secca{,/}",
+        "destination": "/guide/cedolare-secca-affitti-brevi/",
+        "type": 301
+      },
+      {
+        "source": "/sito-casa-vacanza{,/}",
+        "destination": "/servizi/booking-diretto/",
+        "type": 301
+      },
+      {
+        "source": "/prenota-una-consulenza-gratuita{,/}",
+        "destination": "/contatti/",
+        "type": 301
+      },
+      {
+        "source": "/contact{,/}",
+        "destination": "/contatti/",
+        "type": 301
+      },
+      {
+        "source": "/blog{,/}",
+        "destination": "/guide/",
+        "type": 301
+      },
+      {
+        "source": "/feed{,/}",
+        "destination": "/",
+        "type": 301
+      },
+      {
+        "source": "/contatti.php{,/}",
+        "destination": "/contatti/",
+        "type": 301
+      }
+    ],
+    "headers": [
+      {
+        "source": "**",
+        "headers": [
+          {
+            "key": "X-Content-Type-Options",
+            "value": "nosniff"
+          },
+          {
+            "key": "Referrer-Policy",
+            "value": "strict-origin-when-cross-origin"
+          },
+          {
+            "key": "Strict-Transport-Security",
+            "value": "max-age=31536000"
+          }
+        ]
+      },
+      {
+        "source": "**/*.html",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=3600"
+          }
+        ]
+      },
+      {
+        "source": "**/*.@(webp|jpg|jpeg|png|css|js|woff2|mp4)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=31536000, immutable"
+          }
+        ]
+      },
+      {
+        "source": "**/*.svg",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=2592000"
+          }
+        ]
+      }
+    ]
+  }
+}

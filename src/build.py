@@ -12,8 +12,8 @@ WA = 'https://wa.me/393290614613'
 CAL = 'https://calendly.com/vsemeraro/30min'
 INDEXNOW_KEY = '5340ac70e4b275ca587b9bcc46cdf271'
 # Modulo contatti senza PHP (serve per Firebase Hosting): chiave pubblica di Web3Forms, le richieste arrivano alla mail con cui è stata creata.
-# Vuota = si usa ancora contatti.php su Netsons.
-WEB3FORMS_KEY = ''
+# Vuota = si usa ancora contatti.php su Netsons. Chiave creata da Vito il 10/11/2026.
+WEB3FORMS_KEY = '2356260b-b82f-4deb-be26-3e91906fcd25'
 CSS = open(os.path.join(HERE, 'base.css')).read()
 CSS = re.sub(r'/\*.*?\*/', '', CSS, flags=re.S)
 CSS = re.sub(r'\s+', ' ', CSS).replace(' {', '{').replace('{ ', '{').replace('; ', ';').replace(' }', '}').replace(': ', ':')

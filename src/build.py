@@ -11,6 +11,9 @@ MAIL = 'hello@gestione-affitti-brevi-milano.it'
 WA = 'https://wa.me/393290614613'
 CAL = 'https://calendly.com/vsemeraro/30min'
 INDEXNOW_KEY = '5340ac70e4b275ca587b9bcc46cdf271'
+# Modulo contatti senza PHP (serve per Firebase Hosting): chiave pubblica di Web3Forms, le richieste arrivano alla mail con cui è stata creata.
+# Vuota = si usa ancora contatti.php su Netsons.
+WEB3FORMS_KEY = ''
 CSS = open(os.path.join(HERE, 'base.css')).read()
 CSS = re.sub(r'/\*.*?\*/', '', CSS, flags=re.S)
 CSS = re.sub(r'\s+', ' ', CSS).replace(' {', '{').replace('{ ', '{').replace('; ', ';').replace(' }', '}').replace(': ', ':')
@@ -200,19 +203,33 @@ def calc_form(sel_zone=None, h='h2'):
 <p class="small" style="margin:10px 0 0">Stima indicativa, dopo commissioni, pulizie e tasse. La analizziamo insieme in consulenza.</p>
 </form>'''
 
+def form_open():
+    if not WEB3FORMS_KEY:
+        return '<form class="card" action="/contatti.php" method="post">\n<input class="hp" name="sito" tabindex="-1" autocomplete="off" aria-hidden="true">'
+    return ('<form class="card" action="https://api.web3forms.com/submit" method="post" data-w3f>\n'
+            f'<input type="hidden" name="access_key" value="{WEB3FORMS_KEY}"><input type="hidden" name="subject" value="Nuova richiesta dal sito">'
+            f'<input type="hidden" name="from_name" value="Sito GAB"><input type="hidden" name="redirect" value="{SITE}/grazie/">'
+            '<input type="hidden" name="pagina" value=""><input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">')
+
+# Errore dal vecchio contatti.php (?errore=1) e, con Web3Forms, controllo nel browser: nome e almeno 6 cifre nel telefono
+FORM_JS = r"""<script>(function(){var f=document.currentScript.closest('form');function err(){f.querySelectorAll('.form-err').forEach(function(e){e.hidden=false})}
+if(/errore=1/.test(location.search))err();if(!f.hasAttribute('data-w3f'))return;
+f.addEventListener('submit',function(ev){var n=f.nome.value.trim(),z=f.zona.value.trim();
+if(!n||f.telefono.value.replace(/\D/g,'').length<6){ev.preventDefault();err();return}
+f.subject.value='Nuova richiesta dal sito: '+n+(z?' - '+z:'');f.pagina.value=location.pathname+location.search})})()</script>"""
+
 def contact_band(zone_text=''):
     return f'''<section class="section" style="padding-top:0"><div class="wrap"><div class="band">
 <div><h2>Parliamo del tuo appartamento</h2>
 <p>Consulenza gratuita di 30 minuti, senza impegno. Ti rispondo personalmente entro 24 ore lavorative.</p>
 <div class="signed">{picture('vito-avatar', [160], 'Vito Semeraro', '56px', cls='')}<div><strong>Vito Semeraro</strong><small style="color:#fff">Fondatore di GAB</small></div></div>
 <p style="margin-top:18px"><a class="btn" style="background:#fff;color:var(--brand-dark)" href="{CAL}" rel="noopener">Prenota su Calendly</a></p></div>
-<form class="card" action="/contatti.php" method="post">
-<input class="hp" name="sito" tabindex="-1" autocomplete="off" aria-hidden="true">
+{form_open()}
 <label for="f-nome">Nome</label><input id="f-nome" name="nome" required autocomplete="name">
 <div class="row2"><div><label for="f-tel">Telefono</label><input id="f-tel" name="telefono" type="tel" required autocomplete="tel"></div>
 <div><label for="f-zona">Zona immobile</label><input id="f-zona" name="zona" value="{esc(zone_text)}" placeholder="es. NoLo"></div></div>
 <label for="f-msg">Messaggio (facoltativo)</label><input id="f-msg" name="messaggio" placeholder="es. bilocale, libero da gennaio">
-<p class="form-err" hidden style="color:#b00020;font-weight:600;margin:12px 0 0">Controlla nome e telefono (almeno 6 cifre), oppure chiamami al 329 06 14 613.</p><script>if(/errore=1/.test(location.search))document.querySelectorAll('.form-err').forEach(function(e){{e.hidden=false}})</script>
+<p class="form-err" hidden style="color:#b00020;font-weight:600;margin:12px 0 0">Controlla nome e telefono (almeno 6 cifre), oppure chiamami al 329 06 14 613.</p>{FORM_JS}
 <button class="btn btn-primary" style="width:100%;margin-top:16px">Richiamatemi</button>
 <p class="small" style="margin:10px 0 0">Inviando accetti la <a href="/privacy/">privacy policy</a>.</p>
 </form></div></div></section>'''
@@ -1087,7 +1104,8 @@ def build_seo_files():
     # IndexNow: file di verifica della chiave (Bing, Yandex, Seznam)
     open(os.path.join(DIST, INDEXNOW_KEY + '.txt'), 'w').write(INDEXNOW_KEY)
     open(os.path.join(DIST, '.htaccess'), 'w').write(HTACCESS)
-    open(os.path.join(DIST, 'contatti.php'), 'w').write(CONTACT_PHP)
+    if not WEB3FORMS_KEY:  # con Web3Forms il PHP non serve (e Firebase non lo esegue)
+        open(os.path.join(DIST, 'contatti.php'), 'w').write(CONTACT_PHP)
     open(os.path.join(DIST, 'favicon.svg'), 'w').write(FAVICON)
     open(os.path.join(DIST, 'robots.txt'), 'w').write(f'User-agent: *\nAllow: /\nDisallow: /grazie/\n\nSitemap: {SITE}/sitemap.xml\n')
     zl = '\n'.join(f'- [{z[2]}]({SITE}/zone/{z[0]}/)' for z in ZONES)

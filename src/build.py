@@ -31,7 +31,10 @@ GA_ID = 'G-B77K9RC859'
 CFWA = '<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon=\'{"token": "84af6820ea6c4d93b3e82df54a69762c"}\'></script>'
 CK_HTML = ('<div id="ck" class="ck" role="dialog" aria-label="Preferenze cookie" hidden><p>Usiamo Google Analytics solo se accetti, '
            'per capire quali pagine sono utili. Nessun cookie pubblicitario. <a href="/privacy/#cookie">Privacy e cookie</a></p>'
-           '<div><button type="button" class="btn btn-ghost" data-ok>Accetta</button><button type="button" class="btn btn-ghost" data-no>Rifiuta</button></div></div>')
+           '<div><button type="button" class="btn btn-primary" data-ok>Accetta</button><button type="button" class="ck-set" data-set aria-expanded="false">Impostazioni</button></div>'
+           '<div class="ck-pan" hidden><label><input type="checkbox" checked disabled> Necessari: sempre attivi</label><label><input type="checkbox" data-stat> Statistiche (Google Analytics)</label>'
+           '<button type="button" class="btn btn-ghost" data-save>Salva le scelte</button></div>'
+           '<button type="button" class="ck-x" data-no aria-label="Chiudi e continua senza accettare" title="Chiudi e continua senza accettare">&times;</button></div>')
 CK_JS = r"""(function(){var K="gab_ck",ID="%s";window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments)};
 gtag("consent","default",{ad_storage:"denied",ad_user_data:"denied",ad_personalization:"denied",analytics_storage:"denied"});
 function get(){try{return localStorage.getItem(K)}catch(e){return null}}function put(v){try{localStorage.setItem(K,v)}catch(e){}}
@@ -41,12 +44,15 @@ function wipe(){document.cookie.split(";").forEach(function(c){var n=c.split("="
 var b=document.getElementById("ck");if(!b)return;
 b.querySelector("[data-ok]").addEventListener("click",function(){put("si");b.hidden=true;load()});
 b.querySelector("[data-no]").addEventListener("click",function(){put("no");b.hidden=true;wipe()});
+var pn=b.querySelector(".ck-pan"),sb=b.querySelector("[data-set]"),st=b.querySelector("[data-stat]");
+sb.addEventListener("click",function(){pn.hidden=!pn.hidden;sb.setAttribute("aria-expanded",String(!pn.hidden));st.checked=get()==="si"});
+b.querySelector("[data-save]").addEventListener("click",function(){if(st.checked){put("si");b.hidden=true;load()}else{put("no");b.hidden=true;if(on)gtag("consent","update",{analytics_storage:"denied"});wipe()}pn.hidden=true});
 document.querySelectorAll("[data-ck]").forEach(function(a){a.addEventListener("click",function(e){e.preventDefault();b.hidden=false})});
 var v=get();if(v==="si")load();else if(v!=="no")b.hidden=false;
 document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href]");if(!a)return;var h=a.getAttribute("href"),
 m=h.indexOf("tel:")===0?"telefono":h.indexOf("wa.me")>-1?"whatsapp":h.indexOf("calendly.com")>-1?"calendly":h.indexOf("mailto:")===0?"email":"";if(m)gtag("event","contatto",{metodo:m})});
 if(location.pathname==="/grazie/")gtag("event","generate_lead",{metodo:"modulo"});})();""" % GA_ID
-CSS += '.ck{position:fixed;left:10px;right:10px;bottom:16px;z-index:40;max-width:760px;margin:0 auto;background:var(--paper);border:3px solid var(--ink);padding:14px 16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}.ck[hidden]{display:none}.ck p{margin:0;font-size:.92rem;flex:1 1 260px}.ck div{display:flex;gap:8px}.ck .btn{padding:10px 16px;font-size:1rem}@media (max-width:700px){.ck{bottom:76px}}'
+CSS += '.ck{position:fixed;left:10px;right:10px;bottom:16px;z-index:40;max-width:760px;margin:0 auto;background:var(--paper);border:3px solid var(--ink);padding:14px 16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}.ck[hidden]{display:none}.ck p{margin:0;font-size:.92rem;flex:1 1 260px}.ck div{display:flex;gap:8px}.ck .btn{padding:10px 16px;font-size:1rem}.ck{padding-right:48px}.ck-x{position:absolute;top:4px;right:6px;background:none;border:0;font-size:1.8rem;line-height:1;padding:6px 10px;cursor:pointer;color:var(--ink)}.ck-set{background:none;border:0;font:inherit;text-decoration:underline;cursor:pointer;padding:10px 6px;color:var(--ink)}.ck .ck-pan{flex:1 1 100%;display:flex;flex-direction:column;gap:6px;align-items:flex-start;border-top:2px solid var(--ink);padding-top:10px}.ck .ck-pan[hidden]{display:none}.ck-pan label{display:flex;gap:8px;align-items:center;font-size:.95rem;font-weight:400;letter-spacing:0;text-transform:none;margin:0}.ck-pan input{width:auto;margin:0}@media (max-width:700px){.ck{bottom:76px}}'
 
 ZONES = [
     # slug, nome breve, nome lungo, lat, lng, base tariffa monolocale (calibrata sul bilocale Precotto a 1.400 €/mese in medio termine)

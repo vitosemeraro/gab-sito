@@ -779,6 +779,7 @@ def build_misc():
 <h2>Nessun costo fisso, nessun vincolo</h2><p>Non paghi canoni mensili né costi di attivazione: la nostra commissione è una percentuale di quello che incassi. Puoi interrompere la gestione in qualsiasi momento con <strong>30 giorni di preavviso</strong>.</p>
 <h2>Cosa resta a carico del proprietario</h2><ul><li>Utenze, condominio e tasse sull'immobile</li><li>Le commissioni dei portali (Airbnb, Booking) sull'affitto breve</li><li>Eventuali acquisti per l'arredo e le riparazioni, sempre concordati prima</li></ul>
 <p>Le pulizie tra un ospite e l'altro sono pagate dall'ospite con la tariffa di pulizia.</p>
+<h2>Quali tasse paga il proprietario che affitta su Airbnb a Milano?</h2><p>Sull'incasso dell'affitto breve paghi la <strong>cedolare secca</strong>: nel 2026 è al 21% per un solo immobile e al 26% dal secondo. Quando l'ospite paga tramite Airbnb, il portale trattiene una ritenuta del 21% e la versa allo Stato. L'<strong>imposta di soggiorno</strong> invece la paga l'ospite: 9,50 € a persona per notte nel 2026, e sulle prenotazioni Airbnb la riscuote e la versa la piattaforma. Restano tue le tasse sull'immobile. Calcoli e scadenze sono nelle guide sulla <a href="/guide/cedolare-secca-affitti-brevi/">cedolare secca 2026</a> e sulla <a href="/guide/imposta-di-soggiorno-milano-affitti-brevi/">tassa di soggiorno a Milano</a>.</p>
 <h2>Un esempio concreto</h2><p>Con 70 € a notte per 30 notti, in affitto breve ti restano circa <strong>1.260 €</strong> al mese, nel medio termine circa <strong>1.606 €</strong>. <a href="/guide/affitto-breve-o-medio-termine/">Ecco il calcolo voce per voce</a>.</p>
 </div></div></section>'''
     simple_page('/prezzi/', [H, ('Prezzi', None)], 'Prezzi', 'Prezzi della gestione affitti brevi: 15% breve, 10% medio termine',
@@ -791,7 +792,8 @@ def build_misc():
                       ('Ci sono costi di attivazione?', 'No. Eventuali servizi extra come il servizio fotografico vengono concordati prima.'),
                       ('Su cosa si calcola il 15%?', 'Sugli incassi delle prenotazioni di affitto breve. Ti mandiamo ogni mese il dettaglio nel report.'),
                       ('Chi paga le pulizie e le commissioni dei portali?', 'Le pulizie tra un ospite e l\'altro le paga l\'ospite con la tariffa di pulizia. Le commissioni di Airbnb e Booking sull\'affitto breve restano a carico del proprietario.'),
-                      ('Quanto preavviso serve per disdire?', '30 giorni. Puoi interrompere la gestione in qualsiasi momento, senza vincoli pluriennali.')], priority='0.9')
+                      ('Quanto preavviso serve per disdire?', '30 giorni. Puoi interrompere la gestione in qualsiasi momento, senza vincoli pluriennali.'),
+                      ('Che tasse paga chi affitta su Airbnb a Milano?', 'La cedolare secca sugli incassi: nel 2026 il 21% per un solo immobile e il 26% dal secondo, con la ritenuta del 21% trattenuta da Airbnb. L\'imposta di soggiorno, 9,50 € a persona per notte, la paga l\'ospite e su Airbnb la versa la piattaforma.')], priority='0.9')
 
     # chi siamo
     inner = f'''<section class="section" style="padding-top:10px"><div class="wrap split">

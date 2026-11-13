@@ -583,21 +583,47 @@ def build_services():
                  ('Funziona anche fuori Milano?', 'Sì. La gestione la facciamo solo a Milano, ma sito e marketing li realizziamo per case vacanza in tutta Italia.')],
                 [service_ld('Marketing per affitti brevi', mk_desc, '/servizi/marketing-affitti-brevi/'), video_ld], priority='0.8')
 
-    # pagine keyword commerciali
-    for path, name, h1, title, desc, angle in [
-        ('/property-manager-milano/', 'Property manager Milano', 'Property manager a Milano per affitti brevi e medio termine',
-         'Property manager Milano per affitti brevi | GAB', 'Cerchi un property manager a Milano? Boutique agency per appartamenti tra Porta Venezia e Bicocca: gestione completa, 15% di commissione, voto ospiti 4,9.',
-         'Un property manager si occupa della tua casa come farebbe un albergatore: prezzi, ospiti, pulizie, manutenzioni e burocrazia. La differenza tra un buon gestore e uno qualsiasi si vede nelle recensioni e nel netto che ti resta a fine mese.'),
-    ]:
-        rev_html, rev_ld = reviews_section('Le recensioni dei nostri ospiti', 3)
-        inner = f'''<section class="section" style="padding-top:10px"><div class="wrap split"><div class="prose">
-<p>{angle}</p>
-<h2>Cosa ottieni</h2><ul class="incl"><li>Un referente unico: Vito, raggiungibile su WhatsApp</li><li>Prezzi aggiornati ogni giorno in base a eventi e domanda</li><li>Check-in, pulizie e manutenzioni con fornitori di zona</li><li>CIN, Alloggiati Web e imposta di soggiorno sempre in regola</li><li>Report mensile chiaro</li></ul>
-<h2>Prezzi</h2><p><strong>15%</strong> sugli incassi per l'affitto breve, <strong>10%</strong> per il medio termine. Nessun costo fisso, disdetta con 30 giorni. <a href="/prezzi/">Dettagli</a>.</p>
-<h2>Dove lavoriamo</h2><p>{', '.join(f'<a href="/zone/{z[0]}/">{z[2]}</a>' for z in ZONES)}.</p>
-</div><div class="photo">{picture('vito-telefono', [640, 400], 'Vito Semeraro gestisce le prenotazioni dal telefono', '(max-width:900px) 100vw, 520px')}</div></div></section>{rev_html}'''
-        simple_page(path, [H, (name, None)], name, h1, 'Boutique agency tra Porta Venezia, Centrale, NoLo, viale Monza, Precotto e Bicocca.', inner, title, desc,
-                    extra_ld=[service_ld(name, desc, path)] + rev_ld, priority='0.9')
+    # property manager Milano: pagina estesa (richiesta regia pagine/gab-8, 13/11/2026)
+    path = '/property-manager-milano/'
+    pm_desc = 'Property manager a Milano per affitti brevi e medio termine, da Porta Venezia a Bicocca: 15% sugli incassi, nessun costo fisso, voto ospiti 4,9.'
+    rev_html, rev_ld = reviews_section('Le recensioni dei nostri ospiti', 3)
+    brief = inbreve("Un property manager a Milano gestisce la tua casa in affitto breve o medio termine al posto tuo: annunci, prezzi, ospiti, check-in, "
+                    "pulizie e pratiche come CIN e Alloggiati Web. GAB lavora tra Porta Venezia e Bicocca e chiede il 15% sugli incassi dell'affitto breve "
+                    "e il 10% nel medio termine, senza costi fissi e con disdetta a 30 giorni.")
+    inner = f'''<section class="section" style="padding-top:10px"><div class="wrap split"><div class="prose">
+{brief}
+<p>Un property manager si occupa della tua casa come farebbe un albergatore: prezzi, ospiti, pulizie, manutenzioni e burocrazia. La differenza tra un buon gestore e uno qualsiasi si vede nelle recensioni e nel netto che ti resta a fine mese. Oggi seguiamo personalmente 9 appartamenti a Milano, con un voto medio degli ospiti di 4,9 su 5.</p>
+<h2>Cosa fa un property manager per affitti brevi?</h2>
+<ul class="incl"><li>Un referente unico: Vito, raggiungibile su WhatsApp</li><li>Annunci su Airbnb, Booking e Vrbo con i calendari sincronizzati</li><li>Prezzi aggiornati ogni giorno in base a eventi e domanda</li><li>Messaggi con gli ospiti, check-in, pulizie e manutenzioni con fornitori di zona</li><li>CIN, Alloggiati Web e imposta di soggiorno sempre in regola</li><li>Report mensile chiaro con incassi, costi e commissione</li></ul>
+</div><div class="photo">{picture('vito-telefono', [640, 400], 'Vito Semeraro gestisce le prenotazioni dal telefono', '(max-width:900px) 100vw, 520px')}</div></div></section>
+<section class="section soft"><div class="wrap prose">
+<h2>Quanto costa un property manager a Milano?</h2>
+<p>Le commissioni a Milano vanno di solito dal 10 al 30% degli incassi, a seconda di quanto è compreso. Ecco come si colloca GAB rispetto alle fasce di mercato raccolte nella guida sulle <a href="/guide/commissioni-property-manager-milano/">commissioni dei property manager a Milano</a>.</p>
+<table><tr><th>Voce</th><th>GAB</th><th>Fasce tipiche a Milano</th></tr>
+<tr><td>Gestione completa, affitto breve</td><td>15% sugli incassi</td><td>15-25%</td></tr>
+<tr><td>Medio termine (da 1 a 18 mesi)</td><td>10% sul canone</td><td>dipende dal gestore</td></tr>
+<tr><td>Solo gestione online</td><td>non prevista: la gestione è sempre completa</td><td>10-15%</td></tr>
+<tr><td>Costi fissi o di attivazione</td><td>nessuno</td><td>a volte a parte</td></tr>
+<tr><td>Pulizie tra un ospite e l'altro</td><td>pagate dall'ospite con la tariffa di pulizia</td><td>a volte a carico del proprietario</td></tr>
+<tr><td>Vincolo di durata</td><td>disdetta con 30 giorni di preavviso</td><td>a volte contratti annuali con penali</td></tr></table>
+<p>Un esempio: con 2.100 € di incassi in un mese, la commissione del 15% è di 315 €. Le commissioni dei portali restano a parte, a carico del proprietario. Tutti i dettagli sono nella pagina <a href="/prezzi/">prezzi</a>.</p>
+<h2>Che differenza c'è tra property management e gestione affitti brevi?</h2>
+<p>Nella pratica sono la stessa cosa: il property management è la gestione della casa per conto del proprietario. Per gli affitti brevi vuol dire occuparsi di ospiti e portali; per il <a href="/servizi/medio-termine/">medio termine</a> di inquilini con contratto transitorio, come studenti e trasfertisti. Noi facciamo entrambe e ti diciamo quale formula rende di più per la tua casa: leggi il confronto tra <a href="/guide/affitto-breve-o-medio-termine/">affitto breve e medio termine</a>.</p>
+<h2>Come si sceglie un property manager?</h2>
+<ol><li><strong>Base di calcolo</strong>: chiedi se la percentuale si applica all'incasso lordo o al netto dei portali.</li><li><strong>Cosa è incluso</strong>: check-in, pulizie, pratiche e report devono essere scritti nel contratto.</li><li><strong>Recensioni</strong>: guarda il voto degli appartamenti che gestisce già.</li><li><strong>Zona</strong>: un gestore vicino interviene in giornata.</li><li><strong>Vincoli</strong>: meglio una disdetta con preavviso che un contratto annuale con penali.</li></ol>
+<p>Approfondisci con la guida su <a href="/guide/come-scegliere-agenzia-affitti-brevi-milano/">come scegliere un'agenzia di affitti brevi a Milano</a>.</p>
+<h2>In quali zone di Milano lavoriamo?</h2><p>{', '.join(f'<a href="/zone/{z[0]}/">{z[2]}</a>' for z in ZONES)}. Lavoriamo solo qui per poter intervenire in giornata.</p>
+<div class="note">Vuoi sapere quanto può rendere la tua casa? <a href="/calcola-rendita/">Usa il calcolatore</a> o <a href="{CAL}">prenota una call di 30 minuti</a>.</div>
+</div></section>{rev_html}'''
+    simple_page(path, [H, ('Property manager Milano', None)], 'Property manager Milano', 'Property manager a Milano per affitti brevi e medio termine',
+                'Boutique agency tra Porta Venezia, Centrale, NoLo, viale Monza, Precotto e Bicocca.', inner,
+                'Property manager Milano: 15%, zero costi fissi | GAB', pm_desc,
+                faqs=[('Quanto prende un property manager a Milano?', 'Di solito tra il 15 e il 25% degli incassi per la gestione completa. GAB chiede il 15% per l\'affitto breve e il 10% per il medio termine, senza costi fissi.'),
+                      ('Il property manager paga le pulizie?', 'Da noi le pulizie tra un ospite e l\'altro le paga l\'ospite con la tariffa di pulizia indicata nell\'annuncio.'),
+                      ('Posso interrompere la gestione quando voglio?', 'Sì, con 30 giorni di preavviso e senza penali.'),
+                      ('Gestite anche il medio termine?', 'Sì: per il medio termine la commissione è il 10% sul canone e ci occupiamo noi di inquilini, contratto e check-in.'),
+                      ('Lavorate in tutta Milano?', 'No, solo lungo la M1 e viale Monza, da Porta Venezia a Bicocca: così siamo sempre a pochi minuti da ogni casa.')],
+                extra_ld=[service_ld('Property manager Milano', pm_desc, path)] + rev_ld, priority='0.9')
 
     # gestione Airbnb: pagina estesa (consiglio regia gab-20261105-5)
     path = '/gestione-airbnb-milano/'

@@ -819,14 +819,25 @@ def build_misc():
                            "name": "Vito", "jobTitle": "Fondatore", "worksFor": {"@id": SITE + "/#gab"}, "image": SITE + "/img/vito-ritratto-640.webp", "knowsLanguage": ["it", "en", "fr", "es", "pt"]}])
 
     # contatti
+    zone_links = ', '.join(f'<a href="/zone/{z[0]}/">{esc(z[2])}</a>' for z in ZONES)
     inner = f'''<section class="section" style="padding-top:10px"><div class="wrap grid3">
 <div class="card"><h2 style="font-size:1.2rem">📞 Telefono</h2><p><a href="tel:{TEL}">{TEL_H}</a></p></div>
 <div class="card"><h2 style="font-size:1.2rem">💬 WhatsApp</h2><p><a href="{WA}">Scrivimi su WhatsApp</a></p></div>
 <div class="card"><h2 style="font-size:1.2rem">✉️ Email</h2><p><a href="mailto:{MAIL}">{MAIL}</a></p></div>
+</div></section>
+<section class="section" style="padding-top:0"><div class="wrap prose">
+<h2>GAB Gestione Affitti Brevi a Milano</h2>
+<p><strong>GAB Gestione Affitti Brevi</strong> è una boutique agency di Milano che gestisce affitti brevi e a medio termine lungo la M1 e viale Monza, da Porta Venezia a Bicocca.</p>
+<ul><li><strong>Città</strong>: Milano (MI)</li>
+<li><strong>Zone servite</strong>: {zone_links}</li>
+<li><strong>Telefono e WhatsApp</strong>: <a href="tel:{TEL}">{TEL_H}</a></li>
+<li><strong>Email</strong>: <a href="mailto:{MAIL}">{MAIL}</a></li>
+<li><strong>Consulenza</strong>: gratuita, 30 minuti, su <a href="{CAL}">Calendly</a></li>
+<li><strong>Tempi di risposta</strong>: entro 24 ore lavorative</li></ul>
 </div></section>'''
     simple_page('/contatti/', [H, ('Contatti', None)], 'Contatti', 'Contatta GAB: consulenza gratuita per la tua casa',
                 'Scrivimi, chiamami o prenota una call. Ti rispondo personalmente entro 24 ore lavorative.', inner,
-                'Contatti e consulenza gratuita | GAB', 'Contatta GAB per una consulenza gratuita sulla gestione del tuo affitto breve o a medio termine a Milano: telefono, WhatsApp, email o Calendly.', priority='0.8')
+                'GAB Gestione Affitti Brevi Milano: contatti e consulenza', 'Contatti di GAB Gestione Affitti Brevi a Milano, da Porta Venezia a Bicocca: telefono, WhatsApp, email o Calendly. Rispondo entro 24 ore lavorative.', priority='0.8')
 
     # calcolatore
     inner = f'''<section class="section" style="padding-top:10px"><div class="wrap split"><div>{calc_form(None, 'h2')}</div>

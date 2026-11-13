@@ -437,10 +437,37 @@ def build_services():
     ]
     inner = '<section class="section" style="padding-top:20px"><div class="wrap grid3 cards-link">' + ''.join(
         f'<a class="card service" href="{u}"><div class="ico">{i}</div><h2 style="font-size:1.25rem">{t}</h2><p>{d}</p><span>Scopri →</span></a>' for u, i, t, d in cards) + '</div></section>'
+    intro = '<section class="section" style="padding-top:10px;padding-bottom:0"><div class="wrap prose">' + inbreve(
+        "GAB gestisce affitti brevi e a medio termine a Milano, tra Porta Venezia e Bicocca. Puoi affidarci tutta la casa, con il 15% sugli incassi "
+        "per l'affitto breve o il 10% per il medio termine, senza costi fissi e con disdetta a 30 giorni, oppure solo una parte: consulenza, foto, pratiche, sito o marketing.") + '</div></section>'
+    detail = '''<section class="section" style="padding-top:10px"><div class="wrap prose">
+<h2>Quali servizi offre GAB e quanto costano?</h2>
+<table><tr><th>Servizio</th><th>Per chi</th><th>Prezzo</th></tr>
+<tr><td><a href="/servizi/gestione-completa/">Gestione completa</a></td><td>Chi vuole delegare tutto l'affitto breve</td><td>15% sugli incassi, nessun costo fisso</td></tr>
+<tr><td><a href="/servizi/medio-termine/">Affitti a medio termine</a></td><td>Chi preferisce inquilini da 1 a 18 mesi</td><td>10% sugli incassi, nessun costo fisso</td></tr>
+<tr><td><a href="/servizi/pratiche-cin-burocrazia/">Pratiche e CIN</a></td><td>Chi vuole essere in regola senza pensieri</td><td>Comprese nella gestione completa</td></tr>
+<tr><td><a href="/servizi/consulenza-avvio/">Consulenza avvio</a></td><td>Chi vuole gestire la casa da solo</td><td>Prima call di 30 minuti gratuita, poi proposta su misura</td></tr>
+<tr><td><a href="/servizi/home-staging-foto/">Home staging e foto</a></td><td>Chi ha un annuncio che prenota poco</td><td>Preventivo concordato prima</td></tr>
+<tr><td><a href="/servizi/consulenza-home-staging/">Consulenza home staging con AI</a></td><td>Chi deve rinnovare la casa con un budget preciso</td><td>Su misura del tuo budget</td></tr>
+<tr><td><a href="/servizi/booking-diretto/">Sito per prenotazioni dirette</a></td><td>Chi vuole meno commissioni dei portali</td><td>Preventivo dopo una call di 30 minuti</td></tr>
+<tr><td><a href="/servizi/marketing-affitti-brevi/">Marketing per affitti brevi</a></td><td>Chi vuole più prenotazioni dirette</td><td>Preventivo dopo una call di 30 minuti</td></tr></table>
+<h2>Cosa comprende la gestione completa?</h2><p>Annunci su Airbnb, Booking e Vrbo, prezzi dinamici ogni giorno, messaggi con gli ospiti 7 giorni su 7, check-in, pulizie, manutenzioni, pratiche e report mensile. Costa il <strong>15% sugli incassi</strong> dell'affitto breve, senza costi fissi, e puoi disdire con 30 giorni di preavviso. <a href="/servizi/gestione-completa/">Scopri la gestione completa</a> o leggi come lavoriamo come <a href="/property-manager-milano/">property manager a Milano</a> e nella <a href="/gestione-airbnb-milano/">gestione Airbnb</a>.</p>
+<h2>Quando conviene il medio termine?</h2><p>Quando vuoi un reddito stabile e meno usura della casa. Affittiamo per periodi da 1 a 18 mesi a professionisti in trasferta, studenti e famiglie: nei nostri appartamenti l'occupazione arriva al <strong>95%</strong> e la commissione è il <strong>10%</strong>. <a href="/servizi/medio-termine/">Scopri gli affitti a medio termine</a>.</p>
+<h2>Chi si occupa di CIN, Alloggiati Web e imposta di soggiorno?</h2><p>Ce ne occupiamo noi: codice CIN, comunicazione degli ospiti alla Questura, imposta di soggiorno del Comune di Milano, dati ISTAT e controlli di sicurezza. Con la gestione completa sono compresi nella commissione. <a href="/servizi/pratiche-cin-burocrazia/">Vedi le pratiche che gestiamo</a>.</p>
+<h2>Posso gestire la casa da solo con il vostro aiuto?</h2><p>Sì. La <a href="/servizi/consulenza-avvio/">consulenza avvio</a> è un percorso di tre sessioni da un'ora per partire bene: analisi della casa, preparazione dell'annuncio e delle pratiche, strumenti per gestire prezzi e ospiti. La prima call di 30 minuti è gratuita.</p>
+<h2>Come rendere l'annuncio più attraente?</h2><p>Con <a href="/servizi/home-staging-foto/">home staging e foto professionali</a>: piccolo allestimento, servizio fotografico e testi in italiano e inglese. Se la casa va rinnovata, la <a href="/servizi/consulenza-home-staging/">consulenza home staging con AI</a> parte dal tuo budget, ti mostra le stanze arredate prima dei lavori con <a href="https://home-staged.ai/">home-staged.ai</a> e calcola in quanti mesi rientri della spesa.</p>
+<h2>Come ricevere prenotazioni senza commissioni dei portali?</h2><p>Con un <a href="/servizi/booking-diretto/">sito per prenotazioni dirette</a>, con prenotatore sincronizzato con Airbnb e Booking, e con il <a href="/servizi/marketing-affitti-brevi/">marketing per affitti brevi</a>: SEO, scheda Google, social e campagne. Ogni prenotazione diretta evita la commissione del portale, intorno al 15%. Leggi anche la <a href="/guide/prenotazioni-dirette-affitti-brevi/">guida alle prenotazioni dirette</a>.</p>
+<div class="note">Non sai da dove partire? <a href="/calcola-rendita/">Calcola quanto può rendere la tua casa</a> o guarda <a href="/prezzi/">tutti i prezzi</a>.</div>
+</div></section>'''
     simple_page('/servizi/', [H, ('Servizi', None)], 'Servizi', 'Servizi di gestione affitti brevi e medio termine a Milano',
                 'Puoi affidarci tutto o solo una parte. In ogni caso parli sempre con me, Vito, e con il mio piccolo team.',
-                inner, 'Servizi gestione affitti brevi Milano | GAB',
-                'Gestione completa, affitti a medio termine, consulenza, home staging, pratiche CIN e booking diretto per appartamenti a Milano nord-est.', priority='0.9')
+                intro + inner + detail, 'Servizi gestione affitti brevi Milano: 15% e 10% | GAB',
+                'Servizi GAB a Milano: gestione completa al 15%, medio termine al 10%, senza costi fissi. Più consulenza, foto, pratiche CIN, sito e marketing per host.',
+                faqs=[('Posso affidarvi solo una parte del lavoro?', 'Sì. Oltre alla gestione completa puoi scegliere solo la consulenza avvio, home staging e foto, il sito per prenotazioni dirette o il marketing.'),
+                      ('Ci sono costi fissi o di attivazione?', 'No. La gestione si paga solo in percentuale sugli incassi: 15% per l\'affitto breve, 10% per il medio termine. Eventuali servizi extra, come il servizio fotografico, vengono concordati prima.'),
+                      ('In quali zone di Milano lavorate?', 'Tra Porta Venezia e Bicocca, nella zona nord-est di Milano. <a href="/zone/">Vedi le zone servite</a>.'),
+                      ('Quanto preavviso serve per disdire la gestione?', '30 giorni, senza vincoli pluriennali.')],
+                priority='0.9')
 
     def svc(slug, name, h1, lead, sections, faqs, title, desc):
         inner = f'<section class="section" style="padding-top:10px"><div class="wrap prose">{sections}</div></section>'

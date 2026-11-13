@@ -1069,10 +1069,11 @@ RewriteRule ^prenota-una-consulenza-gratuita/?$ /contatti/ [R=301,L]
 RewriteRule ^contact/?$ /contatti/ [R=301,L]
 RewriteRule ^blog/?$ /guide/ [R=301,L]
 RewriteRule ^feed/?$ / [R=301,L]
+RewriteRule ^sections-about-me(/.*)?$ / [R=301,L]
 
 # Pagine demo del vecchio tema e WordPress: rimosse definitivamente
 RewriteRule ^(20[0-9]{2})/ - [G,L]
-RewriteRule ^(cart|checkout|shop|courses|dashboard|my-account|profile|sample-page|hero|sections-about-me|instructor-registration|student-registration|become-a-teacher|author|category|tag|comments)(/.*)?$ - [G,L]
+RewriteRule ^(cart|checkout|shop|courses|dashboard|my-account|profile|sample-page|hero|instructor-registration|student-registration|become-a-teacher|author|category|tag|comments)(/.*)?$ - [G,L]
 RewriteRule ^(wp-admin|wp-content|wp-includes|wp-json|wp-login\.php|xmlrpc\.php|wp-sitemap.*|sitemap_index\.xml|page-sitemap\.xml|post-sitemap\.xml)(/.*)?$ - [G,L]
 # Copia doppia del sito caricata per errore in public_html/public_html fino al 7/11/2026
 RewriteRule ^public_html(/.*)?$ - [G,L]

@@ -29,30 +29,12 @@ def inbreve(t): return f'<div class="inbreve"><strong>In breve</strong><p>{t}</p
 GA_ID = 'G-B77K9RC859'
 # CFWA: Cloudflare Web Analytics, senza cookie: conta tutte le visite, anche di chi rifiuta il banner
 CFWA = '<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon=\'{"token": "84af6820ea6c4d93b3e82df54a69762c"}\'></script>'
-CK_HTML = ('<div id="ck" class="ck" role="dialog" aria-label="Preferenze cookie" hidden><p>Usiamo Google Analytics solo se accetti, '
-           'per capire quali pagine sono utili. Nessun cookie pubblicitario. <a href="/privacy/#cookie">Privacy e cookie</a></p>'
-           '<div><button type="button" class="btn btn-primary" data-ok>Accetta</button><button type="button" class="ck-set" data-set aria-expanded="false">Impostazioni</button></div>'
-           '<div class="ck-pan" hidden><label><input type="checkbox" checked disabled> Necessari: sempre attivi</label><label><input type="checkbox" data-stat> Statistiche (Google Analytics)</label>'
-           '<button type="button" class="btn btn-ghost" data-save>Salva le scelte</button></div>'
-           '<button type="button" class="ck-x" data-no aria-label="Chiudi e continua senza accettare" title="Chiudi e continua senza accettare">&times;</button></div>')
-CK_JS = r"""(function(){var K="gab_ck",ID="%s";window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments)};
-gtag("consent","default",{ad_storage:"denied",ad_user_data:"denied",ad_personalization:"denied",analytics_storage:"denied"});
-function get(){try{return localStorage.getItem(K)}catch(e){return null}}function put(v){try{localStorage.setItem(K,v)}catch(e){}}
-var on=false;function load(){if(on)return;on=true;gtag("consent","update",{analytics_storage:"granted"});gtag("js",new Date());gtag("config",ID);
-var s=document.createElement("script");s.async=true;s.src="https://www.googletagmanager.com/gtag/js?id="+ID;document.head.appendChild(s)}
-function wipe(){document.cookie.split(";").forEach(function(c){var n=c.split("=")[0].trim();if(n.indexOf("_ga")===0){["",location.hostname,"."+location.hostname].forEach(function(d){document.cookie=n+"=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/"+(d?"; domain="+d:"")})}})}
-var b=document.getElementById("ck");if(!b)return;
-b.querySelector("[data-ok]").addEventListener("click",function(){put("si");b.hidden=true;load()});
-b.querySelector("[data-no]").addEventListener("click",function(){put("no");b.hidden=true;wipe()});
-var pn=b.querySelector(".ck-pan"),sb=b.querySelector("[data-set]"),st=b.querySelector("[data-stat]");
-sb.addEventListener("click",function(){pn.hidden=!pn.hidden;sb.setAttribute("aria-expanded",String(!pn.hidden));st.checked=get()==="si"});
-b.querySelector("[data-save]").addEventListener("click",function(){if(st.checked){put("si");b.hidden=true;load()}else{put("no");b.hidden=true;if(on)gtag("consent","update",{analytics_storage:"denied"});wipe()}pn.hidden=true});
-document.querySelectorAll("[data-ck]").forEach(function(a){a.addEventListener("click",function(e){e.preventDefault();b.hidden=false})});
-var v=get();if(v==="si")load();else if(v!=="no")b.hidden=false;
+CK_HTML = ''  # banner: consent.js (componente unico su tutti i siti)
+# eventi GA4: gtag è definito da consent.js, che carica Analytics solo dopo "Accetta"
+CK_JS = r"""(function(){if(!window.gtag)return;
 document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href]");if(!a)return;var h=a.getAttribute("href"),
 m=h.indexOf("tel:")===0?"telefono":h.indexOf("wa.me")>-1?"whatsapp":h.indexOf("calendly.com")>-1?"calendly":h.indexOf("mailto:")===0?"email":"";if(m)gtag("event","contatto",{metodo:m})});
-if(location.pathname==="/grazie/")gtag("event","generate_lead",{metodo:"modulo"});})();""" % GA_ID
-CSS += '.ck{position:fixed;left:10px;right:10px;bottom:16px;z-index:40;max-width:760px;margin:0 auto;background:var(--paper);border:3px solid var(--ink);padding:14px 16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}.ck[hidden]{display:none}.ck p{margin:0;font-size:.92rem;flex:1 1 260px}.ck div{display:flex;gap:8px}.ck .btn{padding:10px 16px;font-size:1rem}.ck{padding-right:48px}.ck-x{position:absolute;top:4px;right:6px;background:none;border:0;font-size:1.8rem;line-height:1;padding:6px 10px;cursor:pointer;color:var(--ink)}.ck-set{background:none;border:0;font:inherit;text-decoration:underline;cursor:pointer;padding:10px 6px;color:var(--ink)}.ck .ck-pan{flex:1 1 100%;display:flex;flex-direction:column;gap:6px;align-items:flex-start;border-top:2px solid var(--ink);padding-top:10px}.ck .ck-pan[hidden]{display:none}.ck-pan label{display:flex;gap:8px;align-items:center;font-size:.95rem;font-weight:400;letter-spacing:0;text-transform:none;margin:0}.ck-pan input{width:auto;margin:0}@media (max-width:700px){.ck{bottom:76px}}'
+if(location.pathname==="/grazie/")gtag("event","generate_lead",{metodo:"modulo"});})();"""
 
 ZONES = [
     # slug, nome breve, nome lungo, lat, lng, base tariffa monolocale (calibrata sul bilocale Precotto a 1.400 €/mese in medio termine)
@@ -153,6 +135,7 @@ def page(path, title, desc, body, ld_items=(), scripts=(), og_image='/img/vito-h
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<script src="/consent.js?v=1.0.0" data-ga="{GA_ID}" data-policy="/privacy/#cookie" data-legacy="gab_ck" data-accent="#c8006b"></script>
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(desc)}">
 <link rel="canonical" href="{url}">
@@ -182,7 +165,7 @@ def page(path, title, desc, body, ld_items=(), scripts=(), og_image='/img/vito-h
 <p style="margin-top:14px">GAB Gestione Affitti Brevi<br>Boutique agency di Vito Semeraro<br>Milano, da Porta Venezia a Bicocca<br><a href="tel:{TEL}">{TEL_H}</a><br><a href="mailto:{MAIL}">{MAIL}</a></p></div>
 <div><h2>Servizi</h2><ul><li><a href="/servizi/gestione-completa/">Gestione completa</a></li><li><a href="/servizi/medio-termine/">Affitti a medio termine</a></li><li><a href="/property-manager-milano/">Property manager Milano</a></li><li><a href="/gestione-airbnb-milano/">Gestione Airbnb Milano</a></li><li><a href="/servizi/consulenza-home-staging/">Home staging con AI</a></li><li><a href="/servizi/marketing-affitti-brevi/">Marketing e prenotazioni dirette</a></li><li><a href="/prezzi/">Prezzi</a></li></ul></div>
 <div><h2>Zone</h2><ul>{''.join(f'<li><a href="/zone/{z[0]}/">{z[2]}</a></li>' for z in ZONES)}</ul></div>
-<div><h2>Guide</h2><ul><li><a href="/guide/cedolare-secca-affitti-brevi/">Cedolare secca 2026</a></li><li><a href="/guide/codice-cin-affitti-brevi/">Codice CIN</a></li><li><a href="/guide/affitto-breve-o-medio-termine/">Breve o medio termine?</a></li><li><a href="/calcola-rendita/">Calcola la rendita</a></li><li><a href="/eventi/">Eventi</a></li><li><a href="/privacy/">Privacy</a></li><li><a href="/privacy/#cookie" data-ck>Preferenze cookie</a></li></ul></div>
+<div><h2>Guide</h2><ul><li><a href="/guide/cedolare-secca-affitti-brevi/">Cedolare secca 2026</a></li><li><a href="/guide/codice-cin-affitti-brevi/">Codice CIN</a></li><li><a href="/guide/affitto-breve-o-medio-termine/">Breve o medio termine?</a></li><li><a href="/calcola-rendita/">Calcola la rendita</a></li><li><a href="/eventi/">Eventi</a></li><li><a href="/privacy/">Privacy</a></li><li><a href="/privacy/#cookie" data-cc-open>Preferenze cookie</a></li></ul></div>
 </div><div class="wrap" style="margin-top:30px;font-size:.8rem;opacity:.7">© {date.today().year} GAB Gestione Affitti Brevi · Recensioni da Airbnb, pubblicate dagli ospiti</div></footer>
 {CK_HTML}
 <div class="mobilebar"><a class="btn btn-ghost" href="tel:{TEL}">Chiama</a><a class="btn btn-wa" href="{WA}">WhatsApp</a></div>
@@ -291,6 +274,7 @@ def build():
     # immagini
     imgsrc = os.path.join(HERE, '..', 'foto2')
     shutil.copytree(os.path.join(HERE, 'fonts'), os.path.join(DIST, 'fonts'))
+    shutil.copy(os.path.join(HERE, 'consent.js'), os.path.join(DIST, 'consent.js'))
     os.makedirs(os.path.join(DIST, 'img'))
     from PIL import Image
     for f in os.listdir(imgsrc):

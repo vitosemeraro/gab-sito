@@ -57,7 +57,7 @@ def ld(obj): return '<script type="application/ld+json">' + json.dumps(obj, ensu
 
 ORG = {"@type": "LocalBusiness", "@id": SITE + "/#gab", "name": "GAB Gestione Affitti Brevi", "url": SITE + "/",
        "telephone": TEL, "email": MAIL, "image": SITE + "/img/vito-ritratto-640.webp", "priceRange": "€€",
-       "founder": {"@type": "Person", "@id": SITE + "/chi-siamo/#vito", "name": "Vito Semeraro"},
+       "founder": {"@type": "Person", "@id": SITE + "/chi-siamo/#vito", "name": "Vito"},
        "logo": SITE + "/favicon.svg", "currenciesAccepted": "EUR", "knowsLanguage": ["it", "en", "fr", "es", "pt"],
        "geo": {"@type": "GeoCoordinates", "latitude": 45.497, "longitude": 9.214},
        "knowsAbout": ["Gestione affitti brevi", "Affitti a medio termine", "Property management Airbnb", "Codice CIN", "Cedolare secca", "Home staging"],
@@ -162,7 +162,7 @@ def page(path, title, desc, body, ld_items=(), scripts=(), og_image='/img/vito-h
 </main>
 <footer><div class="wrap cols">
 <div><a class="logo" href="/" aria-label="GAB"><span></span><b>GAB</b><span></span></a>
-<p style="margin-top:14px">GAB Gestione Affitti Brevi<br>Boutique agency di Vito Semeraro<br>Milano, da Porta Venezia a Bicocca<br><a href="tel:{TEL}">{TEL_H}</a><br><a href="mailto:{MAIL}">{MAIL}</a></p></div>
+<p style="margin-top:14px">GAB Gestione Affitti Brevi<br>Boutique agency di Vito<br>Milano, da Porta Venezia a Bicocca<br><a href="tel:{TEL}">{TEL_H}</a><br><a href="mailto:{MAIL}">{MAIL}</a></p></div>
 <div><h2>Servizi</h2><ul><li><a href="/servizi/gestione-completa/">Gestione completa</a></li><li><a href="/servizi/medio-termine/">Affitti a medio termine</a></li><li><a href="/property-manager-milano/">Property manager Milano</a></li><li><a href="/gestione-airbnb-milano/">Gestione Airbnb Milano</a></li><li><a href="/servizi/consulenza-home-staging/">Home staging con AI</a></li><li><a href="/servizi/marketing-affitti-brevi/">Marketing e prenotazioni dirette</a></li><li><a href="/prezzi/">Prezzi</a></li></ul></div>
 <div><h2>Zone</h2><ul>{''.join(f'<li><a href="/zone/{z[0]}/">{z[2]}</a></li>' for z in ZONES)}</ul></div>
 <div><h2>Guide</h2><ul><li><a href="/guide/cedolare-secca-affitti-brevi/">Cedolare secca 2026</a></li><li><a href="/guide/codice-cin-affitti-brevi/">Codice CIN</a></li><li><a href="/guide/affitto-breve-o-medio-termine/">Breve o medio termine?</a></li><li><a href="/calcola-rendita/">Calcola la rendita</a></li><li><a href="/eventi/">Eventi</a></li><li><a href="/privacy/">Privacy</a></li><li><a href="/privacy/#cookie" data-cc-open>Preferenze cookie</a></li></ul></div>
@@ -211,7 +211,7 @@ def contact_band(zone_text=''):
     return f'''<section class="section" style="padding-top:0"><div class="wrap"><div class="band">
 <div><h2>Parliamo del tuo appartamento</h2>
 <p>Consulenza gratuita di 30 minuti, senza impegno. Ti rispondo personalmente entro 24 ore lavorative.</p>
-<div class="signed">{picture('vito-avatar', [160], 'Vito Semeraro', '56px', cls='')}<div><strong>Vito Semeraro</strong><small style="color:#fff">Fondatore di GAB</small></div></div>
+<div class="signed">{picture('vito-avatar', [160], 'Vito', '56px', cls='')}<div><strong>Vito</strong><small style="color:#fff">Fondatore di GAB</small></div></div>
 <p style="margin-top:18px"><a class="btn" style="background:#fff;color:var(--brand-dark)" href="{CAL}" rel="noopener">Prenota su Calendly</a></p></div>
 {form_open()}
 <label for="f-nome">Nome</label><input id="f-nome" name="nome" required autocomplete="name">
@@ -320,7 +320,7 @@ def build():
 <p><a href="/prezzi/">Cosa è incluso nel prezzo</a> · <a href="/servizi/gestione-completa/">La gestione completa</a> · <a href="/zone/">Le zone servite</a></p>
 </div></section>
 <section class="section"><div class="wrap split">
-<div class="photo">{picture('vito-hero', [1200, 700], 'Vito Semeraro, fondatore di GAB', '(max-width:900px) 100vw, 560px')}</div>
+<div class="photo">{picture('vito-hero', [1200, 700], 'Vito, fondatore di GAB', '(max-width:900px) 100vw, 560px')}</div>
 <div><span class="eyebrow">Chi c'è dietro GAB</span><h2>Ciao, sono Vito. Gestisco case come se fossero mie</h2>
 <p>Sono host su Airbnb da oltre 10 anni e vivo a Milano. Ho iniziato con i miei appartamenti tra Turro e Precotto, oggi seguo 9 case di proprietari che vogliono rendere di più senza perderci tempo.</p>
 <p>Lavoro con pochi immobili per scelta: così rispondo io agli ospiti, faccio io i sopralluoghi e conosco ogni casa.</p>
@@ -390,14 +390,14 @@ def build_events():
         event_ld = {"@type": "Event", "name": h1, "description": desc, "startDate": f"{day}T18:00:00+01:00", "endDate": f"{day}T19:00:00+01:00",
                     "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode", "eventStatus": "https://schema.org/EventScheduled",
                     "location": {"@type": "VirtualLocation", "url": SITE + path}, "inLanguage": "it-IT",
-                    "performer": {"@type": "Person", "name": "Vito Semeraro", "url": SITE + "/chi-siamo/"}, "organizer": {"@id": SITE + "/#gab"}}
+                    "performer": {"@type": "Person", "name": "Vito", "url": SITE + "/chi-siamo/"}, "organizer": {"@id": SITE + "/#gab"}}
         add(path, f'{h1} | Eventi GAB', desc, inner, ld_items=[crumbs_ld(crumbs), event_ld], scripts=[js], priority='0.6')
         cards += f'<a class="card service" href="{path}"><span class="small">{sub}</span><h3>{h1}</h3><p>{desc}</p><span>Apri →</span></a>'
     inner = f'<section class="section" style="padding-top:10px"><div class="wrap"><div class="grid3 cards-link">{cards}</div></div></section>'
     simple_page('/eventi/', [H, ('Eventi', None)], 'Eventi', 'Eventi e interventi di GAB',
                 'Meetup e incontri in cui raccontiamo come gestiamo gli affitti brevi a Milano, AI compresa.', inner,
                 'Eventi su affitti brevi e AI a Milano | GAB',
-                'Meetup e interventi di Vito Semeraro (GAB) su affitti brevi, AI per host e gestione degli appartamenti a Milano.', priority='0.5')
+                'Meetup e interventi di Vito (GAB) su affitti brevi, AI per host e gestione degli appartamenti a Milano.', priority='0.5')
 
 
 def simple_page(path, crumbs, eyebrow, h1, lead, inner, title, desc, faqs=None, extra_ld=(), scripts=(), band=True, priority='0.7', zone_text=''):
@@ -585,7 +585,7 @@ def build_services():
 <p>Un property manager si occupa della tua casa come farebbe un albergatore: prezzi, ospiti, pulizie, manutenzioni e burocrazia. La differenza tra un buon gestore e uno qualsiasi si vede nelle recensioni e nel netto che ti resta a fine mese. Oggi seguiamo personalmente 9 appartamenti a Milano, con un voto medio degli ospiti di 4,9 su 5.</p>
 <h2>Cosa fa un property manager per affitti brevi?</h2>
 <ul class="incl"><li>Un referente unico: Vito, raggiungibile su WhatsApp</li><li>Annunci su Airbnb, Booking e Vrbo con i calendari sincronizzati</li><li>Prezzi aggiornati ogni giorno in base a eventi e domanda</li><li>Messaggi con gli ospiti, check-in, pulizie e manutenzioni con fornitori di zona</li><li>CIN, Alloggiati Web e imposta di soggiorno sempre in regola</li><li>Report mensile chiaro con incassi, costi e commissione</li></ul>
-</div><div class="photo">{picture('vito-telefono', [640, 400], 'Vito Semeraro gestisce le prenotazioni dal telefono', '(max-width:900px) 100vw, 520px')}</div></div></section>
+</div><div class="photo">{picture('vito-telefono', [640, 400], 'Vito gestisce le prenotazioni dal telefono', '(max-width:900px) 100vw, 520px')}</div></div></section>
 <section class="section soft"><div class="wrap prose">
 <h2>Quanto costa un property manager a Milano?</h2>
 <p>Le commissioni a Milano vanno di solito dal 10 al 30% degli incassi, a seconda di quanto è compreso. Ecco come si colloca GAB rispetto alle fasce di mercato raccolte nella guida sulle <a href="/guide/commissioni-property-manager-milano/">commissioni dei property manager a Milano</a>.</p>
@@ -627,7 +627,7 @@ def build_services():
 <p>Siamo host su Airbnb da oltre 10 anni. Possiamo prendere in mano il tuo annuncio come co-host, oppure crearne uno nuovo partendo da foto e testi, e portarlo anche su Booking e Vrbo.</p>
 <h2>Cosa fa un gestore Airbnb per te?</h2>
 <ul class="incl"><li><strong>Annuncio</strong>: titolo, testi in italiano e inglese, foto, regole della casa e servizi in evidenza</li><li><strong>Prezzi dinamici</strong> aggiornati ogni giorno, con i picchi di Fashion Week, Salone del Mobile e fiere</li><li><strong>Messaggi con gli ospiti</strong> 7 giorni su 7, in 5 lingue</li><li><strong>Check-in</strong> di persona o self check-in con serratura smart</li><li><strong>Pulizie e biancheria</strong> tra un ospite e l'altro, con fornitori di zona</li><li><strong>Manutenzioni</strong> piccole e urgenti, sempre concordate con te</li><li><strong>Burocrazia</strong>: codice CIN, Alloggiati Web, imposta di soggiorno e dati ISTAT</li><li><strong>Report mensile</strong> con prenotazioni, incassi, costi e la nostra commissione</li></ul>
-</div><div class="photo">{picture('vito-telefono', [640, 400], 'Vito Semeraro gestisce le prenotazioni Airbnb dal telefono', '(max-width:900px) 100vw, 520px')}</div></div></section>
+</div><div class="photo">{picture('vito-telefono', [640, 400], 'Vito gestisce le prenotazioni Airbnb dal telefono', '(max-width:900px) 100vw, 520px')}</div></div></section>
 <section class="section soft"><div class="wrap prose">
 <h2>Chi fa cosa: tu o noi?</h2>
 <table><tr><th>Attività</th><th>Chi se ne occupa</th><th>Chi paga</th></tr>
@@ -795,7 +795,7 @@ def build_misc():
 
     # chi siamo
     inner = f'''<section class="section" style="padding-top:10px"><div class="wrap split">
-<div class="photo">{picture('vito-ritratto', [640, 400], 'Ritratto di Vito Semeraro, fondatore di GAB', '(max-width:900px) 100vw, 520px', eager=True)}</div>
+<div class="photo">{picture('vito-ritratto', [640, 400], 'Ritratto di Vito, fondatore di GAB', '(max-width:900px) 100vw, 520px', eager=True)}</div>
 <div class="prose"><h2>Ciao, sono Vito</h2>
 <p>Sono di origini pugliesi e vivo a Milano. Sono su Airbnb da 13 anni, prima come viaggiatore e poi come host: il primo annuncio è stato un trullo in Valle d'Itria, poi sono arrivati i miei appartamenti a Milano tra Turro e Precotto.</p>
 <p>Di lavoro sono project manager nell'IT. Ho portato nella gestione degli affitti lo stesso metodo: processi chiari, strumenti digitali, numeri misurati e un report che si capisce.</p>
@@ -806,15 +806,15 @@ def build_misc():
 <div class="prose"><h2>Come lavoro</h2>
 <ul class="incl"><li><strong>Pochi immobili, tutti in zona</strong>: da Porta Venezia a Bicocca, mai a più di 20 minuti</li><li><strong>Numeri trasparenti</strong>: commissione chiara e report mensile</li><li><strong>La formula giusta</strong>: affitto breve, medio termine o un mix, in base alla tua casa</li><li><strong>Tutto dal telefono</strong>: prezzi, messaggi e calendari sempre sotto controllo</li></ul>
 <p><a href="{CAL}">Prenota una call di 30 minuti con me</a></p></div>
-<div class="photo">{picture('vito-telefono', [640, 400], 'Vito Semeraro controlla le prenotazioni dal telefono', '(max-width:900px) 100vw, 520px')}</div>
+<div class="photo">{picture('vito-telefono', [640, 400], 'Vito controlla le prenotazioni dal telefono', '(max-width:900px) 100vw, 520px')}</div>
 </div></section>'''
     simple_page('/chi-siamo/', [H, ('Chi siamo', None)], 'Chi siamo', 'GAB è una boutique agency di affitti brevi a Milano',
                 'Pochi appartamenti, seguiti personalmente da chi li conosce. Ecco chi c\'è dietro.', inner,
-                'Chi siamo: Vito Semeraro e la boutique agency GAB | GAB',
-                'Vito Semeraro, host Airbnb da oltre 10 anni, guida GAB: boutique agency che segue 9 appartamenti a Milano tra Porta Venezia e Bicocca.',
+                'Chi siamo: Vito e la boutique agency GAB | GAB',
+                'Vito, host Airbnb da oltre 10 anni, guida GAB: boutique agency che segue 9 appartamenti a Milano tra Porta Venezia e Bicocca.',
                 extra_ld=[{"@type": "Person", "@id": SITE + "/chi-siamo/#vito", "url": SITE + "/chi-siamo/", **({"sameAs": VITO_SAME_AS} if VITO_SAME_AS else {}),
                            "description": "Fondatore di GAB Gestione Affitti Brevi: gestisce appartamenti in affitto breve e a medio termine a Milano, da Porta Venezia a Bicocca.",
-                           "name": "Vito Semeraro", "jobTitle": "Fondatore", "worksFor": {"@id": SITE + "/#gab"}, "image": SITE + "/img/vito-ritratto-640.webp", "knowsLanguage": ["it", "en", "fr", "es", "pt"]}])
+                           "name": "Vito", "jobTitle": "Fondatore", "worksFor": {"@id": SITE + "/#gab"}, "image": SITE + "/img/vito-ritratto-640.webp", "knowsLanguage": ["it", "en", "fr", "es", "pt"]}])
 
     # contatti
     inner = f'''<section class="section" style="padding-top:10px"><div class="wrap grid3">
@@ -854,7 +854,7 @@ def build_misc():
 
     # privacy
     inner = f'''<section class="section" style="padding-top:10px"><div class="wrap prose">
-<h2>Titolare del trattamento</h2><p>Vito Semeraro, GAB Gestione Affitti Brevi, Milano. Email: <a href="mailto:{MAIL}">{MAIL}</a>.</p>
+<h2>Titolare del trattamento</h2><p>Vito, GAB Gestione Affitti Brevi, Milano. Email: <a href="mailto:{MAIL}">{MAIL}</a>.</p>
 <h2>Quali dati raccogliamo</h2><p>Solo i dati che ci invii con il modulo di contatto, via email, telefono o WhatsApp: nome, telefono, email, zona e informazioni sull'immobile.</p>
 <h2>Perché</h2><p>Per risponderti e prepararti una proposta (base giuridica: misure precontrattuali richieste da te, art. 6.1.b GDPR). Non usiamo i dati per altre finalità e non li cediamo a terzi.</p>
 <h2>Per quanto tempo</h2><p>Fino a 24 mesi dall'ultimo contatto, salvo un rapporto di gestione in corso.</p>
@@ -881,12 +881,12 @@ def guide(slug, title, h1, desc, lead, toc, content, faqs, updated=None, brief='
     tochtml = '<nav class="toc" aria-label="Indice"><strong>In questa guida</strong><ol>' + ''.join(f'<li><a href="#{a}">{t}</a></li>' for a, t in toc) + '</ol></nav>'
     upd = updated or '2026-10-27'  # data fissa: la data di aggiornamento cambia solo quando cambia il testo
     inner = f'''<section class="section" style="padding-top:10px"><div class="wrap prose">
-<div class="signed">{picture('vito-avatar', [160], 'Vito Semeraro', '56px', eager=True)}<div><strong>Vito Semeraro</strong><small>Aggiornata il {date.fromisoformat(upd).strftime('%d/%m/%Y')}</small></div></div>
+<div class="signed">{picture('vito-avatar', [160], 'Vito', '56px', eager=True)}<div><strong>Vito</strong><small>Aggiornata il {date.fromisoformat(upd).strftime('%d/%m/%Y')}</small></div></div>
 {inbreve(brief) if brief else ''}{tochtml}{content}
 <div class="note">Questa guida è informativa e non sostituisce il parere del tuo commercialista. Vuoi capire cosa conviene nel tuo caso? <a href="/contatti/">Scrivimi</a> o <a href="/calcola-rendita/">calcola la rendita</a>.</div>
 </div></section>'''
     art = {"@type": "Article", "headline": h1, "description": desc, "datePublished": upd, "dateModified": upd, "inLanguage": "it-IT",
-           "author": {"@type": "Person", "@id": SITE + "/chi-siamo/#vito", "name": "Vito Semeraro", "url": SITE + "/chi-siamo/"}, "publisher": {"@id": SITE + "/#gab"},
+           "author": {"@type": "Person", "@id": SITE + "/chi-siamo/#vito", "name": "Vito", "url": SITE + "/chi-siamo/"}, "publisher": {"@id": SITE + "/#gab"},
            "image": SITE + "/img/vito-hero-1200.webp", "mainEntityOfPage": SITE + path, **({"abstract": brief} if brief else {})}
     simple_page(path, [H, G, (h1 if len(h1) < 50 else title.split('|')[0].strip(), None)], 'Guida', h1, lead, inner, title, desc, faqs, [art], priority='0.7')
     GUIDES.append((path, h1, desc))
@@ -1156,7 +1156,7 @@ def build_seo_files():
     gl = '\n'.join(f'- [{t}]({SITE}{p}): {d}' for p, t, d in GUIDES)
     open(os.path.join(DIST, 'llms.txt'), 'w').write(f"""# GAB Gestione Affitti Brevi
 
-> Boutique agency di gestione affitti brevi e a medio termine a Milano, fondata da Vito Semeraro. Gestisce pochi appartamenti selezionati lungo la M1 e viale Monza, da Porta Venezia a Bicocca.
+> Boutique agency di gestione affitti brevi e a medio termine a Milano, fondata da Vito. Gestisce pochi appartamenti selezionati lungo la M1 e viale Monza, da Porta Venezia a Bicocca.
 
 - Commissione: 15% sugli incassi per l'affitto breve, 10% sul canone per il medio termine (30+ notti). Nessun costo fisso, disdetta con 30 giorni di preavviso.
 - Servizi: gestione completa (annunci su Airbnb, Booking e Vrbo, prezzi dinamici, ospiti, check-in, pulizie, CIN, Alloggiati Web, imposta di soggiorno, report mensile), medio termine con contratti transitori, consulenza avvio, home staging, sito per prenotazioni dirette, marketing.
